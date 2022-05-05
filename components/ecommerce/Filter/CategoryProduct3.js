@@ -53,7 +53,7 @@ const CategoryProduct3 = ({ updateProductCategory }) => {
                         return (
                             <li onClick={(e) => selectCategory(e, cat.name)} key={index}>
                                 <a>
-                                    <img src="/assets/imgs/theme/icons/category-1.svg" alt="" />
+                                    <img src="/assets/imgs/theme/icons/futter-icon.webp" alt="futter icon" />
                                     { cat.name }
                                 </a>
                                 {/*<span className="count">30</span>*/}

@@ -177,7 +177,7 @@ const Footer = () => {
                                         </a>
                                         </Link>
                                         <p className="font-lg text-heading">
-                                            Lime Shop ist ein Online Shop für Früchte und Gemüse aus der Schweiz
+                                            Der Bio Hundeshop vertreibt in der Schweiz nachhaltiges Hundefutter und Zubehör für Hunde und Besitzer
                                         </p>
                                     </div>
                                     <ul className="contact-infor">

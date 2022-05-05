@@ -137,7 +137,7 @@ const SingleProductList = ({
 
                         <div className="product-price">
                             <span>${product.price} </span>
-                            <span className="old-price">{product.oldPrice && `$ ${product.oldPrice}`}</span>
+                            <span className="old-price">{product.oldPrice && `CHF ${product.oldPrice}`}</span>
                         </div>
 
                         <p className="mt-15">{product.desc}</p>

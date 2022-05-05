@@ -69,7 +69,7 @@ const MobileMenu = ({
                             <Link href="/">
                                 <a>
                                     <img
-                                        src="/assets/imgs/theme/logo.png"
+                                        src="/assets/imgs/demo-shop-logo.webp"
                                         alt="logo"
                                     />
                                 </a>
