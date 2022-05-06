@@ -171,7 +171,7 @@ const Footer = () => {
                                     <div className="logo  mb-30">
                                         <Link href="/"><a className="mb-15">
                                             <img
-                                                src="/assets/imgs/demo-shop-logo.webp"
+                                                src="/assets/imgs/logo.webp"
                                                 alt="logo"
                                             />
                                         </a>

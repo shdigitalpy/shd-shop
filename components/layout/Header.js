@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import i18n from '../../i18n';
 import Router from 'next/router';
 import { connect } from "react-redux";
+import CategoryProductMainMenu from "../ecommerce/Filter/CategoryProductMainMenu";
 import CategoryProduct2 from "../ecommerce/Filter/CategoryProduct2";
 import CategoryProduct3 from "../ecommerce/Filter/CategoryProduct3";
 import Search from "../ecommerce/Search";
@@ -10,6 +11,7 @@ import { signOut } from "../../rest/calls";
 import { clearCart } from '../../redux/action/cart';
 import { clearWishlist } from '../../redux/action/wishlistAction';
 import { FaPhoneSquareAlt as Icon } from 'react-icons/fa';
+
 
 const Header = ({
     totalCartItems,
@@ -68,7 +70,9 @@ const Header = ({
     });
 
     return (
-        <>
+        <>  
+
+        
             <header className="header-area header-style-1 header-height-2">
                 <div className="mobile-promotion">
                     <span>
@@ -125,6 +129,8 @@ const Header = ({
                             <div className="col-xl-3 col-lg-4">
                                 <div className="header-info header-info-right">
                                     <ul>
+                                    
+
                                         <li>
                                             <strong className="text-brand">
                                                 
@@ -135,7 +141,7 @@ const Header = ({
                                             <Link href="/#">
                                                 <a className="language-dropdown-active">
                                                     <i className="fi-rs-world"></i>
-                                                    { lang === "en" ? "English" : "German" }
+                                                    { lang === "en" ? "English" : "Deutsch" }
                                                     <i className="fi-rs-angle-small-down"></i>
                                                 </a>
                                             </Link>
@@ -152,6 +158,14 @@ const Header = ({
                                                 )}
                                             </ul>
                                         </li>
+
+                                        <li>
+                                                        <Link href="/page-contact">
+                                                            <a>Kontakt</a>
+                                                        </Link>
+
+                                                        
+                                                </li>
                                         
                                     </ul>
                                 </div>
@@ -166,7 +180,7 @@ const Header = ({
                                 <Link href="/">
                                     <a>
                                         <img
-                                            src="/assets/imgs/demo-shop-logo.webp"
+                                            src="/assets/imgs/logo.webp"
                                             alt="logo"
                                         />
                                     </a>
@@ -183,33 +197,15 @@ const Header = ({
                                 </div>
                             </div>
                             { !authPage && <div className="header-right d-none d-lg-flex">
+                                
+
+
                                 <div className="search-style-3">
                                     <Search />
                                 </div>
                                 <div className="header-action-right">
                                     <div className="header-action-2">
-                                        {/*<div className="search-location">
-                                            <form action="#">
-                                                <select className="select-active">
-                                                    <option>
-                                                        Your Location
-                                                    </option>
-                                                    <option>Alabama</option>
-                                                    <option>Alaska</option>
-                                                    <option>Arizona</option>
-                                                    <option>Delaware</option>
-                                                    <option>Florida</option>
-                                                    <option>Georgia</option>
-                                                    <option>Hawaii</option>
-                                                    <option>Indiana</option>
-                                                    <option>Maryland</option>
-                                                    <option>Nevada</option>
-                                                    <option>New Jersey</option>
-                                                    <option>New Mexico</option>
-                                                    <option>New York</option>
-                                                </select>
-                                            </form>
-                                        </div>*/}
+                                        
                                         {/*<div className="header-action-icon-2">
                                             <Link href="/shop-compare">
                                                 <a>
@@ -482,7 +478,7 @@ const Header = ({
                                 <Link href="/">
                                     <a>
                                         <img
-                                            src="/assets/imgs/demo-shop-logo.webp"
+                                            src="/assets/imgs/logo.webp"
                                             alt="logo"
                                         />
                                     </a>
@@ -511,169 +507,14 @@ const Header = ({
                                         </div>
                                     </div>
                                 </div>
-                                <div className="main-menu main-menu-padding-1 main-menu-lh-2 d-none d-lg-block  font-heading">
-                                    <nav>
-                                        <ul>
-                                            <li className="hot-deals">
-                                                <img
-                                                    src="/assets/imgs/theme/icons/icon-hot.svg"
-                                                    alt="hot deals"
-                                                />
-                                                <Link href="/products"><a>
-                                                    Rabatte
-                                                </a>
-                                                </Link>
-                                            </li>
+                                
+
+                                        <CategoryProductMainMenu/>
 
 
 
-                                            <li>
-                                                <Link href="/page-about">
-                                                    <a>About</a>
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <Link href="/blog-category-grid">
-                                                    <a>
-                                                        Blog
-                                                        <i className="fi-rs-angle-down"></i>
-                                                    </a>
-                                                </Link>
-                                                <ul className="sub-menu">
-                                                    <li>
-                                                        <Link href="/blog-category-grid">
-                                                            <a>
-                                                                Blog Category
-                                                                Grid
-                                                            </a>
-                                                        </Link>
-                                                    </li>
-                                                    <li>
-                                                        <Link href="/blog-category-list">
-                                                            <a>
-                                                                Blog Category
-                                                                List
-                                                            </a>
-                                                        </Link>
-                                                    </li>
-                                                    <li>
-                                                        <Link href="/blog-category-big">
-                                                            <a>
-                                                                Blog Category
-                                                                Big
-                                                            </a>
-                                                        </Link>
-                                                    </li>
-                                                    <li>
-                                                        <Link href="/blog-category-fullwidth">
-                                                            <a>
-                                                                Blog Category
-                                                                Wide
-                                                            </a>
-                                                        </Link>
-                                                    </li>
-                                                    <li>
-                                                        <Link href="/#">
-                                                            <a>
-                                                                Single Post
-                                                                <i className="fi-rs-angle-right"></i>
-                                                            </a>
-                                                        </Link>
-                                                        <ul className="level-menu level-menu-modify">
-                                                            <li>
-                                                                <Link href="/blog-post-left">
-                                                                    <a>
-                                                                        Left
-                                                                        Sidebar
-                                                                    </a>
-                                                                </Link>
-                                                            </li>
-                                                            <li>
-                                                                <Link href="/blog-post-right">
-                                                                    <a>
-                                                                        Right
-                                                                        Sidebar
-                                                                    </a>
-                                                                </Link>
-                                                            </li>
-                                                            <li>
-                                                                <Link href="/blog-post-fullwidth">
-                                                                    <a>
-                                                                        No
-                                                                        Sidebar
-                                                                    </a>
-                                                                </Link>
-                                                            </li>
-                                                        </ul>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <Link href="/#">
-                                                    <a>
-                                                        Pages
-                                                        <i className="fi-rs-angle-down"></i>
-                                                    </a>
-                                                </Link>
-                                                <ul className="sub-menu">
-                                                    <li>
-                                                        <Link href="/page-about">
-                                                            <a>About Us</a>
-                                                        </Link>
-                                                    </li>
-                                                    <li>
-                                                        <Link href="/page-contact">
-                                                            <a>Contact</a>
-                                                        </Link>
-                                                    </li>
-                                                    <li>
-                                                        <Link href="/page-account">
-                                                            <a>My Account</a>
-                                                        </Link>
-                                                    </li>
-                                                    <li>
-                                                        <Link href="/page-login-register">
-                                                            <a>
-                                                                login/register
-                                                            </a>
-                                                        </Link>
-                                                    </li>
-                                                    <li>
-                                                        <Link href="/page-purchase-guide">
-                                                            <a>
-                                                                Purchase Guide
-                                                            </a>
-                                                        </Link>
-                                                    </li>
-                                                    <li>
-                                                        <Link href="/page-privacy-policy">
-                                                            <a>
-                                                                Privacy Policy
-                                                            </a>
-                                                        </Link>
-                                                    </li>
-                                                    <li>
-                                                        <Link href="/page-terms">
-                                                            <a>
-                                                                Terms of Service
-                                                            </a>
-                                                        </Link>
-                                                    </li>
-                                                    <li>
-                                                        <Link href="/page-404">
-                                                            <a>404 Page</a>
-                                                        </Link>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                             <li>
-                                                <Link href="/page-contact">
-                                                    <a>Contact</a>
-                                                </Link>
-                                            </li>
-                                        </ul>
-                                    </nav>
-                                </div>
+                                            
+                                
                             </div>
                             <div className="hotline d-none d-lg-flex">
                                 <Icon
@@ -728,6 +569,8 @@ const Header = ({
                     </div>
                 </div> }
             </header>
+
+            
         </>
     );
 };

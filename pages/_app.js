@@ -15,9 +15,12 @@ import StorageWrapper from "../components/ecommerce/storage-wrapper";
 import "../public/assets/css/main.css";
 import store from "../redux/store";
 import Preloader from "./../components/elements/Preloader";
+import { motion } from 'framer-motion';
 
 
-function MyApp({ Component, pageProps }) {
+
+
+function MyApp({ Component, pageProps, router  }) {
     const [loading, setLoading] = useState(false);
     const [auth, setAuth] = useState(null);
 
@@ -56,7 +59,20 @@ function MyApp({ Component, pageProps }) {
             {!loading ? (
                 <Provider store={store}>
                     <StorageWrapper>
+                    <motion.div key={router.route} 
+                    initial="pageInitial" 
+                    animate="pageAnimate" 
+
+                    variants={{
+                      pageInitial: {
+                        opacity: 0
+                      },
+                      pageAnimate: {
+                        opacity: 1
+                      },
+                    }}>
                             <Component {...pageProps} auth={auth} validateRedirect={validateRedirect} />
+                            </motion.div>
                             <ToastContainer />
                     </StorageWrapper>
                 </Provider>

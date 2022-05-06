@@ -116,8 +116,8 @@ const SingleProduct2 = ({
                     </div>
 
                     <div className="product-price mt-10">
-                        <span>${product.price} </span>
-                        <span className="old-price">{product.oldPrice && `$ ${product.oldPrice}`}</span>
+                        <span>CHF{product.price} </span>
+                        <span className="old-price">{product.oldPrice && `CHF ${product.oldPrice}`}</span>
                     </div>
                     <div className="sold mt-15 mb-15">
                         <div className="progress mb-5">

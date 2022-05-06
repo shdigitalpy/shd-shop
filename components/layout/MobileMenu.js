@@ -69,7 +69,7 @@ const MobileMenu = ({
                             <Link href="/">
                                 <a>
                                     <img
-                                        src="/assets/imgs/demo-shop-logo.webp"
+                                        src="/assets/imgs/logo.webp"
                                         alt="logo"
                                     />
                                 </a>
@@ -91,12 +91,7 @@ const MobileMenu = ({
                         </div>
                         <div className="mobile-menu-wrap mobile-header-border">
                             <div className="main-categori-wrap mobile-header-border">
-                                <Link href="#">
-                                    <a className="categori-button-active-2 mb-3">
-                                        <span className="fi-rs-apps"></span> Browse
-                                        Categories
-                                    </a>
-                                </Link>
+                                
 
                                 <CategoryProduct2/>
                                 <CategoryProduct3/>

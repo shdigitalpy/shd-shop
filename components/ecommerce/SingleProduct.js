@@ -105,8 +105,8 @@ const SingleProduct = ({
                     </div>
 
                     <div className="product-badges product-badges-position product-badges-mrg">
-                        {!!product.trending && <span className="hot">Hot</span>}
-                        {!!product.created && <span className="new">New</span>}
+                        {!!product.trending && <span className="hot">Aktion</span>}
+                        {!!product.created && <span className="new">NEU</span>}
                         {!!(product.totalSell > 100) && (
                             <span className="best">Best Sell</span>
                         )}
@@ -164,8 +164,8 @@ const SingleProduct = ({
 
                     <div className="product-card-bottom">
                         <div className="product-price">
-                            <span>${product.price} </span>
-                            <span className="old-price">{product.oldPrice && `$ ${product.oldPrice}`}</span>
+                            <span>CHF {product.price} </span>
+                            <span className="old-price">{product.oldPrice && `CHF ${product.oldPrice}`}</span>
                         </div>
                         <div className="add-cart">
                             <a
