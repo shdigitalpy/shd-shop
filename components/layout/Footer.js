@@ -12,22 +12,22 @@ const Footer = () => {
                                 <div className="position-relative newsletter-inner">
                                     <div className="newsletter-content">
                                         <h2 className="mb-20">
-                                            Stay home & get your daily <br />
-                                            needs from our shop
+                                            Erhalte dein gratis Probierset <br />
+                                            
                                         </h2>
                                         <p className="mb-45">
-                                            Start You'r Daily Shopping with{" "}
+                                            Jetzt eintragen{" "}
                                             <span className="text-brand">
-                                                Nest Mart
+                                                und in eine neue Welt eintauchen
                                             </span>
                                         </p>
                                         <form className="form-subcriber d-flex">
                                             <input
                                                 type="email"
-                                                placeholder="Your emaill address"
+                                                placeholder="E-Mail Adresse"
                                             />
                                             <button className="btn" type="submit">
-                                                Subscribe
+                                                Loslegen
                                             </button>
                                         </form>
                                     </div>
@@ -56,9 +56,9 @@ const Footer = () => {
                                     </div>
                                     <div className="banner-text">
                                         <h3 className="icon-box-title">
-                                            Best prices & offers
+                                           Gratis Lieferung
                                         </h3>
-                                        <p>Orders $50 or more</p>
+                                        <p>ab CHF 100.--</p>
                                     </div>
                                 </div>
                             </div>
@@ -75,9 +75,9 @@ const Footer = () => {
                                     </div>
                                     <div className="banner-text">
                                         <h3 className="icon-box-title">
-                                            Free delivery
+                                            Schweizer Onlineshop
                                         </h3>
-                                        <p>24/7 amazing services</p>
+                                        <p>mit Beratung</p>
                                     </div>
                                 </div>
                             </div>
@@ -94,9 +94,9 @@ const Footer = () => {
                                     </div>
                                     <div className="banner-text">
                                         <h3 className="icon-box-title">
-                                            Great daily deal
+                                            Tägliche Aktionen
                                         </h3>
-                                        <p>When you sign up</p>
+                                        <p>im Newsletter</p>
                                     </div>
                                 </div>
                             </div>
@@ -113,9 +113,9 @@ const Footer = () => {
                                     </div>
                                     <div className="banner-text">
                                         <h3 className="icon-box-title">
-                                            Wide assortment
+                                            Grosse Auswahl
                                         </h3>
-                                        <p>Mega Discounts</p>
+                                        <p>Bio Hundefutter</p>
                                     </div>
                                 </div>
                             </div>
@@ -132,9 +132,9 @@ const Footer = () => {
                                     </div>
                                     <div className="banner-text">
                                         <h3 className="icon-box-title">
-                                            Easy returns
+                                            Kundenservice
                                         </h3>
-                                        <p>Within 30 days</p>
+                                        <p>E-Mail und Telefon</p>
                                     </div>
                                 </div>
                             </div>
@@ -218,24 +218,21 @@ const Footer = () => {
                                 className="footer-link-widget col  wow animate__animated animate__fadeInUp"
                                 data-wow-delay=".2s"
                             >
-                                <h4 className="widget-title ">Account</h4>
+                                <h4 className="widget-title ">Mein Konto</h4>
                                 <ul className="footer-list  mb-sm-5 mb-md-0">
                                     <li>
-                                        <a href="#">Sign In</a>
+                                        <a href="/shop-login">Anmelden</a>
                                     </li>
                                     <li>
-                                        <a href="#">View Cart</a>
+                                        <a href="/shop-cart">Warenkorb</a>
                                     </li>
                                     <li>
-                                        <a href="#">My Wishlist</a>
+                                        <a href="/shop-wishlist">Merkliste</a>
                                     </li>
                                     <li>
-                                        <a href="#">Track My Order</a>
+                                        <a href="#">Lieferung verfolgen</a>
                                     </li>
                                     
-                                    <li>
-                                        <a href="#">Shipping Details</a>
-                                    </li>
                                     
                                 </ul>
                             </div>
@@ -246,20 +243,14 @@ const Footer = () => {
                                 <h4 className="widget-title ">Informationen</h4>
                                 <ul className="footer-list  mb-sm-5 mb-md-0">
                                     <li>
-                                        <a href="#">Support Center</a>
+                                        <a href="#">FAQ</a>
                                     </li>
                                     <li>
                                         <a href="#">Lieferung</a>
                                     </li>
-                                    
+            
                                     <li>
-                                        <a href="#">Our Suppliers</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Accessibility</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Promotions</a>
+                                        <a href="#">Aktionen</a>
                                     </li>
                                 </ul>
                             </div>
@@ -283,25 +274,27 @@ const Footer = () => {
                                         <a href="/page-contact">Kontakt</a>
                                     </li>
                                     
-                                    <li>
-                                        <a href="#">Careers</a>
-                                    </li>
+                                   
                                 </ul>
                             </div>
                             <div
                                 className="footer-link-widget col  wow animate__animated animate__fadeInUp"
                                 data-wow-delay=".4s"
                             >
-                                <h4 className="widget-title ">Popular</h4>
+                                <h4 className="widget-title ">Beliebt</h4>
                                 <ul className="footer-list  mb-sm-5 mb-md-0">
                                     <li>
-                                        <a href="#">Milk & Flavoured Milk</a>
+                                        <a href="#">Hundefutter</a>
                                     </li>
                                     <li>
-                                        <a href="#">Butter and Margarine</a>
+                                        <a href="#">Hundezubehör</a>
                                     </li>
                                     <li>
-                                        <a href="#">Eggs Substitutes</a>
+                                        <a href="#">Trainingszubehör</a>
+                                    </li>
+
+                                    <li>
+                                        <a href="#">Hundeleinen</a>
                                     </li>
                                     
                                 </ul>

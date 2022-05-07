@@ -35,7 +35,7 @@ function Login({ auth }) {
     return (
         <>
             <Layout parent="Home" sub="Pages" subChild="Login & Register" authPage>
-            <div className="page-content pb-150">
+            <div className="page-content pb-150 pt-150">
                 <div className="container">
                     <div className="row">
                         <div className="col-xl-8 col-lg-10 col-md-12 m-auto">
@@ -45,17 +45,17 @@ function Login({ auth }) {
                                 </div>
                                 <div className="col-lg-6 col-md-8">
                                     <div className="login_wrap widget-taber-content background-white">
-                                        <div className="padding_eight_all bg-white">
+                                        <div className="padding_eight_all bg-white p-5">
                                             <div className="heading_s1">
-                                                <h1 className="mb-5">Login</h1>
-                                                <p className="mb-30">Don't have an account? <Link href="/page-register"><a>Create here</a></Link></p>
+                                                <h1 className="mb-5">Anmelden</h1>
+                                                <p className="mb-30">Noch kein Konto? <Link href="/page-register"><a>Jetzt registrieren.</a></Link></p>
                                             </div>
                                             <form onSubmit={submitHandler}>
                                                 <div className="form-group">
-                                                    <input type="text" required name="username" placeholder="Username *" autoFocus />
+                                                    <input type="text" required name="username" placeholder="Benutzername *" autoFocus />
                                                 </div>
                                                 <div className="form-group">
-                                                    <input required type="password" name="password" placeholder="password *" />
+                                                    <input required type="password" name="password" placeholder="Passwort *" />
                                                 </div>
                                                 {/*<div className="login_footer form-group">
                                                     <div className="chek-form">

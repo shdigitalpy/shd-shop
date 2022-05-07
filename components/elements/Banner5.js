@@ -11,13 +11,11 @@ const Banner5 = () => {
                     <img src="/assets/imgs/banner/banner-1.png" alt="" />
                     <div className="banner-text">
                         <h4>
-                            Everyday Fresh & <br />
-                            Clean with Our
-                            <br />
-                            Products
+                            Bio  <br />
+                            Hundefutter
                         </h4>
                         <Link href="/products"><a className="btn btn-xs">
-                            Shop Now <i className="fi-rs-arrow-small-right"></i>
+                            Kaufen <i className="fi-rs-arrow-small-right"></i>
                         </a></Link>
                     </div>
                 </div>
@@ -30,12 +28,12 @@ const Banner5 = () => {
                     <img src="/assets/imgs/banner/banner-2.png" alt="" />
                     <div className="banner-text">
                         <h4>
-                            Make your Breakfast
+                            Hundezubehör
                             <br />
-                            Healthy and Easy
+                            
                         </h4>
                         <Link href="/products"><a className="btn btn-xs">
-                            Shop Now <i className="fi-rs-arrow-small-right"></i>
+                            Kaufen <i className="fi-rs-arrow-small-right"></i>
                         </a></Link>
                     </div>
                 </div>
@@ -48,11 +46,11 @@ const Banner5 = () => {
                     <img src="/assets/imgs/banner/banner-3.png" alt="" />
                     <div className="banner-text">
                         <h4>
-                            The best Organic <br />
-                            Products Online
+                            Hundebetten <br />
+                            
                         </h4>
                         <Link href="/products"><a className="btn btn-xs">
-                            Shop Now <i className="fi-rs-arrow-small-right"></i>
+                            Kaufen <i className="fi-rs-arrow-small-right"></i>
                         </a></Link>
                     </div>
                 </div>

@@ -48,7 +48,7 @@ function CategoryTab({ allProducts }) {
     return (
         <>
             <div className="section-title style-2 wow animate__animated animate__fadeIn">
-                <h3>Popular Products</h3>
+                <h3>Beliebte Produkte</h3>
                 <ul className="nav nav-tabs links" id="myTab" role="tablist">
                     <li className="nav-item" role="presentation">
                         <button

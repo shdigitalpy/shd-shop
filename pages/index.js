@@ -79,6 +79,7 @@ const Home = ({ fetchProducts, products, auth }) => {
                     <div className="container">
                         <div className="row">
                             <Banner5 />
+                            
                         </div>
                     </div>
                 </section>
