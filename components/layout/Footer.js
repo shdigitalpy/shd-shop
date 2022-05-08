@@ -75,7 +75,7 @@ const Footer = () => {
                                     </div>
                                     <div className="banner-text">
                                         <h3 className="icon-box-title">
-                                            Schweizer Onlineshop
+                                            Ab CH-Lager
                                         </h3>
                                         <p>mit Beratung</p>
                                     </div>
