@@ -36,18 +36,10 @@ const Intro1 = () => {
                                 grocery deals*/}
                                 {t("main-banner-heading-1")}
                             </h1>
-                            <p className="mb-65">
+                            <h2 className="mb-65">
                                 {t("newsletter")}
-                            </p>
-                            <form className="form-subcriber d-flex">
-                                <input
-                                    type="email"
-                                    placeholder={t("newsletter-input-placeholder")}
-                                />
-                                <button className="btn" type="submit">
-                                    {t("newsletter-subscribe")}
-                                </button>
-                            </form>
+                            </h2>
+                            
                         </div>
                     </div>
                 </SwiperSlide>

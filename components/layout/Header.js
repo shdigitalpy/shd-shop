@@ -130,13 +130,6 @@ const Header = ({
                                 <div className="header-info header-info-right">
                                     <ul>
                                     
-
-                                        <li>
-                                            <strong className="text-brand">
-                                                
-                                               Gratis Lieferung ab CHF 100.--
-                                            </strong>
-                                        </li>
                                         <li>
                                             <Link href="/#">
                                                 <a className="language-dropdown-active">
