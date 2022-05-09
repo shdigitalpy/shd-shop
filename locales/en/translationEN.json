@@ -7,6 +7,10 @@
   "newsletter-subscribe": "Subscribe",
   "search-placeholder": "Search",
 
+   "main-popular" : "Popular",
+  "main-featured" : "Featured",
+  "main-newadded" : "Newly added",
+
   "register" : "Register",
   "register-already" : "Already have an account?",
   "register-login" : "Login here",
@@ -32,7 +36,8 @@
   "cart-subtotal" : "Subtotal",
   "cart-delete" : "Delete",
   "cart-continue" : "Continue Shopping",
-  "cart-sign-in" : "Continue to Checkout",
+  "cart-checkout" : "Checkout",
+  "cart-sign-in" : "Sign-in",
   "cart-delivery" : "Delivery",
   "cart-shipping-address" : "Shipping Address",
   "cart-shipping-city" : "City",
@@ -59,6 +64,7 @@
   "cart-proceed" : "Jetzt kaufen",
   "cart-calc" : "Calculating...",
   "cart-off" : "off",
+  "cart-accept" : "I accept the terms and conditions.",
 
 
 

@@ -5,6 +5,8 @@ import Cat3Tab from '../elements/TrendingTab';
 import { connect } from 'react-redux';
 import Loading from '../elements/Loading';
 // import Link from 'next/link'
+import { useTranslation } from 'react-i18next';
+
 
 function CategoryTab({ allProducts }) {
     const [active, setActive] = useState("1");
@@ -45,21 +47,15 @@ function CategoryTab({ allProducts }) {
         catPAll();
     }, [allProducts]);
 
+
+    const {t} = useTranslation();
+
     return (
         <>
             <div className="section-title style-2 wow animate__animated animate__fadeIn">
                 <h3>Beliebte Produkte</h3>
                 <ul className="nav nav-tabs links" id="myTab" role="tablist">
-                    <li className="nav-item" role="presentation">
-                        <button
-                            className={
-                                active === "1" ? "nav-link active" : "nav-link"
-                            }
-                            onClick={catPAll}
-                        >
-                            All
-                        </button>
-                    </li>
+                    
                     <li className="nav-item" role="presentation">
                         <button
                             className={
@@ -67,7 +63,7 @@ function CategoryTab({ allProducts }) {
                             }
                             onClick={catP1}
                         >
-                            Featured
+                            {t("main-featured")}
                         </button>
                     </li>
                     <li className="nav-item" role="presentation">
@@ -77,7 +73,7 @@ function CategoryTab({ allProducts }) {
                             }
                             onClick={catP2}
                         >
-                            Popular
+                            {t("main-popular")}
                         </button>
                     </li>
                     <li className="nav-item" role="presentation">
@@ -87,7 +83,7 @@ function CategoryTab({ allProducts }) {
                             }
                             onClick={catP3}
                         >
-                            New added
+                           {t("main-newadded")}
                         </button>
                     </li>
                 </ul>

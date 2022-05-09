@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
 import Layout from "../components/layout/Layout";
@@ -16,7 +16,6 @@ import {
 } from "../redux/action/cart";
 import getStripe from "../lib/get-stripe";
 import {getCurrentUser, getCoupons, getShippingCost} from "../rest/calls";
-
 
 
 // Make sure to call `loadStripe` outside of a component’s render to avoid
@@ -195,6 +194,10 @@ const Cart = ({
         }
     }, [currentUser, cartItems])
 
+
+    const scrollToRef = useRef();
+    const myRef = useRef(null)
+    const executeScroll = () => scrollToRef(myRef)
 
     const {t} = useTranslation();
 
@@ -384,12 +387,43 @@ const Cart = ({
                                     </table>
                                 </div>
                                 <div className="cart-action text-end">
+                                    
+
+                                    
+
+                                    {cartItems.length <= 0 ?
+
+                                        null
+
+                                        :
+
+                                        <>
+                                    { !auth && 
                                     <Link href="/page-login" >
                                         <a className="btn " style={{ marginRight: "0.5rem" }}>
                                             
-                                            {t("cart-sign-in")}
+                                            {t("cart-checkout")}
                                         </a>
                                     </Link>
+                                 }
+
+                                { auth && 
+                                    
+                                        <a onClick={() => scrollTo(300,500)} className="btn " style={{ marginRight: "0.5rem" }}>
+                                            
+                                            {t("cart-checkout")}
+                                        </a>
+                                    
+                                 }
+                                 </>
+
+                             
+
+                             }
+
+                                 
+
+                                    
 
                                     <Link href="/">
                                         <a className="" style={{ textDecoration: "underline" }}>
@@ -409,7 +443,7 @@ const Cart = ({
                                         </a>
                                     </Link>
                                 </div> }
-                                { auth && <div className="row mb-50">
+                                { auth && <div className="row mb-50" ref={scrollToRef}>
                                     <div className="col-lg-6 col-md-12">
                                         <div className="heading_s1 mb-3">
                                             <h4>{t("cart-delivery")}</h4>
@@ -764,9 +798,19 @@ const Cart = ({
                                                     </tbody>
                                                 </table>
                                             </div>
-                                            {/*<form action="/api/checkout_session" method="POST">
 
-                                            </form>*/}
+
+                                            <div className="custome-checkbox mb-3">
+                                            <br />
+                                            <input className="form-check-input" type="checkbox" required
+                                            id="flexCheckAGB" />
+                                            <label className="form-check-label"
+                                            htmlFor="flexCheckAGB">
+                                                {t("cart-accept")}
+                                                                </label>
+                                                        </div>
+
+                                            
                                             <br />
                                             { (price() > 0) && (
                                                 <button type="submit" className="btn" style={{ width: "100%" }} onClick={redirectToCheckout}>

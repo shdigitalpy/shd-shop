@@ -165,14 +165,31 @@ const SingleProduct = ({
                     <div className="product-card-bottom">
                         <div className="product-price">
                             <span>CHF {product.price} </span>
-                            <span className="old-price">{product.oldPrice && `CHF ${product.oldPrice}`}</span>
+                            
+
+                            {product.oldPrice ?
+
+
+                                <span className="old-price"><br />CHF {product.oldPrice}</span>
+
+
+                                : 
+                                <p><br/></p>
+
+
+                            }
+
+                            
+                        
+
+
                         </div>
                         <div className="add-cart">
                             <a
                                 className="add"
                                 onClick={(e) => handleCart(product)}
                             >
-                                <i className="fi-rs-shopping-cart mr-5"></i> Add
+                                <i className="fi-rs-shopping-cart mr-5"></i>
                             </a>
                         </div>
                     </div>
