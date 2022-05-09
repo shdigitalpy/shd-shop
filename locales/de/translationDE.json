@@ -12,5 +12,82 @@
 
 
 
-  "about": "Über"
+  "about": "Über",
+
+
+  "cart-name": "Warenkorb",
+  "there-are": "Es ist",
+  "there-many": "Es sind",
+  "cart-one": "Produkt im Warenkorb",
+  "cart-more": "Produkte im Warenkorb",
+  "cart-remove": "Warenkorb leeren",
+  "cart-title": "Produkte",
+  "cart-unit-price" : "Stückpreis",
+  "cart-units" : "Anzahl",
+  "cart-subtotal" : "Zwischentotal",
+  "cart-delete" : "Entfernen",
+  "cart-continue" : "Weiter einkaufen",
+  "cart-sign-in" : "Zur Kasse",
+  "cart-delivery" : "Lieferung",
+  "cart-shipping-address" : "Adresse",
+  "cart-shipping-city" : "Stadt",
+  "cart-shipping-country" : "Land",
+  "cart-shipping-zip" : "PLZ",
+  "cart-shipping-street" : "Strasse",
+  "cart-shipping-number" : "Nr.",
+  "cart-shipping-comment" : "Bemerkung",
+  "cart-billing-question" : "Rechnungsadresse ist gleich wie Lieferadresse",
+  "cart-billing-address" : "Rechnungsadresse",
+  "cart-billing-comment" : "Bemerkung",
+  "cart-change" : "Ändern",
+  "cart-cancel" : "Abbrechen",
+  "cart-save" : "Speichern",
+  "cart-coupon" : "Gutschein",
+  "cart-coupon-text" : "Gutscheincode eingeben",
+  "cart-coupon-send" : "Abschicken",
+  "cart-coupon-ok" : "Gutschein angewendet",
+  "cart-coupon-error" : "Ungültiger Gutscheincode",
+  "cart-total" : "Zusammenfassung",
+  "cart-shipping-total" : "Lieferkosten",
+  "cart-discount-total" : "Rabatt",
+  "cart-grand-total" : "Total",
+  "cart-proceed" : "Jetzt kaufen",
+  "cart-calc" : "Berechnung...",
+  "cart-off" : "günstiger",
+
+
+
+
+  "account-hello" :"Hallo",
+  "account-intro" : "Im Dashboard siehst du die",
+  "account-shipping" : "Liefer- und Rechnungsadresse",
+  "account-details-info" : "dein Password und die Kontodetails anpassen",
+  "account-dashboard" : "Übersicht",
+  "account-orders" : "Bestellungen",
+  "account-details" : "Kontodetails",
+  "account-logout" : "Abmelden",
+  "account-orders-title" : "Deine Bestellungen",
+  "account-orders-no" : "Nr.",
+  "account-orders-date" : "Datum",
+  "account-orders-complete" : "Abgeschlossen",
+  "account-orders-pending" : "Pendent",
+  "account-orders-item" : "Produkt",
+  "account-orders-items" : "Produkte",
+    "account-orders-view" : "Details",
+    "account-first-name" : "Vorname",
+    "account-last-name" : "Nachname",
+    "account-username" : "Benutzername",
+    "account-email" : "E-Mail",
+    "account-phone" : "Telefon",
+    "account-pw-change" : "Passwort ändern",
+     "account-pw-new" : "Neues Passwort",
+      "account-pw-confirm" : "Passwort bestätigen",
+      "account-save-change" : "Änderungen speichern",
+
+  "utils-lang" : "de"
+
+
+
+
+
 }

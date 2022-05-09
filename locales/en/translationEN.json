@@ -8,9 +8,80 @@
   "search-placeholder": "Search",
 
 
+  "about": "About",
+
+
+  "cart-name": "Warenkorb",
+  "there-are": "There is",
+  "there-many": "There is",
+  "cart-one": "product in your cart",
+  "cart-more": "products in your cart",
+  "cart-remove": "Clear cart",
+  "cart-title": "Product",
+  "cart-unit-price" : "Unit Price",
+  "cart-units" : "Quantity",
+  "cart-subtotal" : "Subtotal",
+  "cart-delete" : "Delete",
+  "cart-continue" : "Continue Shopping",
+  "cart-sign-in" : "Continue to Checkout",
+  "cart-delivery" : "Delivery",
+  "cart-shipping-address" : "Shipping Address",
+  "cart-shipping-city" : "City",
+  "cart-shipping-country" : "Country",
+  "cart-shipping-zip" : "Zip",
+  "cart-shipping-street" : "Street",
+  "cart-shipping-number" : "No.",
+  "cart-shipping-comment" : "Comment",
+  "cart-billing-question" : "Billing address is same as shipping address",
+  "cart-billing-address" : "Billing Address",
+  "cart-billing-comment" : "Comment",
+  "cart-change" : "Change",
+   "cart-cancel" : "Cancel",
+  "cart-save" : "Save",
+  "cart-coupon" : "Coupon",
+  "cart-coupon-text" : "Enter coupon code",
+  "cart-coupon-send" : "Apply",
+  "cart-coupon-ok" : "Coupon code applied!",
+  "cart-coupon-error" : "Invalid coupon code!",
+  "cart-total" : "Summary",
+  "cart-shipping-total" : "Lieferkosten",
+  "cart-discount-total" : "Rabatt",
+  "cart-grand-total" : "Total",
+  "cart-proceed" : "Jetzt kaufen",
+  "cart-calc" : "Calculating...",
+  "cart-off" : "off",
 
 
 
 
-  "about": "About"
+    "account-hello" :"Hello",
+    "account-intro" : "From your account dashboard. you can see your",
+    "account-shipping" : "Shipping- und Billingaddress",
+    "account-details-info" : "edit your password and account details",
+    "account-dashboard" : "Dashboard",
+    "account-orders" : "Orders",
+    "account-details" : "Account Details",
+    "account-logout" : "Logout",
+    "account-orders-title" : "Your Orders",
+    "account-orders-no" : "No.",
+    "account-orders-date" : "Date",
+    "account-orders-complete" : "Completed",
+    "account-orders-pending" : "Pending",
+    "account-orders-item" : "Item",
+  "account-orders-items" : "Items",
+    "account-orders-view" : "View",
+    "account-first-name" : "First name",
+    "account-last-name" : "Last name",
+    "account-username" : "Username",
+    "account-email" : "Email",
+    "account-phone" : "Phone",
+    "account-pw-change" : "Change password",
+     "account-pw-new" : "New Password",
+      "account-pw-confirm" : "Confirm Password",
+      "account-save-change" : "Save Changes",
+
+  "utils-lang" : "en"
+
+
+
 }

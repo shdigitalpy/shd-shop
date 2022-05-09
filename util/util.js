@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { useTranslation } from 'react-i18next';
 
 // Delete Product from List By Id
 export const deleteProduct = (list, id) => {
@@ -16,8 +17,15 @@ export const findProductIndexById = (list, id) => {
     return index;
 };
 
+
+
 export const getMonthName = (monthIndex) => {
   const months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+  return months[monthIndex];
+}
+
+export const getMonthNameGerman = (monthIndex) => {
+  const months = ["Januar","Februar","März","April","Mai","Juni","Juli","August","September","Oktober","November","Dezember"];
   return months[monthIndex];
 }
 

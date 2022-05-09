@@ -2,10 +2,11 @@ import Layout from "../components/layout/Layout";
 import Link from "next/link"
 import React, { useState, useEffect } from "react";
 import { getOrders, getCurrentUser, signOut, setPassword, updateProfile } from '../rest/calls';
-import { getMonthName, isPasswordValidated } from "../util/util";
+import { getMonthName, getMonthNameGerman, isPasswordValidated } from "../util/util";
 import Router from "next/router";
 import {fetchProducts} from "../redux/action/product";
 import {connect} from "react-redux";
+import { useTranslation } from 'react-i18next';
 
 function Account({ fetchProducts, products, auth, validateRedirect }) {
     const [activeIndex, setActiveIndex] = useState(1);
@@ -123,6 +124,10 @@ function Account({ fetchProducts, products, auth, validateRedirect }) {
         }
     }, []);
 
+   const {t} = useTranslation();
+
+   const lang = t("utils-lang")
+
     return (
         <>
             <Layout parent="Home" sub="Pages" subChild="Account">
@@ -135,10 +140,10 @@ function Account({ fetchProducts, products, auth, validateRedirect }) {
                                         <div className="dashboard-menu">
                                             <ul className="nav flex-column" role="tablist">
                                                 <li className="nav-item">
-                                                    <a className={activeIndex === 1 ? "nav-link active" : "nav-link"} onClick={() => handleOnClick(1)}><i className="fi-rs-settings-sliders mr-10"></i>Dashboard</a>
+                                                    <a className={activeIndex === 1 ? "nav-link active" : "nav-link"} onClick={() => handleOnClick(1)}><i className="fi-rs-settings-sliders mr-10"></i>{t("account-dashboard")}</a>
                                                 </li>
                                                 <li className="nav-item">
-                                                    <a className={activeIndex === 2 ? "nav-link active" : "nav-link"}  onClick={() => handleOnClick(2)}><i className="fi-rs-shopping-bag mr-10"></i>Orders</a>
+                                                    <a className={activeIndex === 2 ? "nav-link active" : "nav-link"}  onClick={() => handleOnClick(2)}><i className="fi-rs-shopping-bag mr-10"></i>{t("account-orders")}</a>
                                                 </li>
                                                 {/*<li className="nav-item">
                                                     <a className={activeIndex === 3 ? "nav-link active" : "nav-link"}  onClick={() => handleOnClick(3)}><i className="fi-rs-shopping-cart-check mr-10"></i>Track Your Order</a>
@@ -147,10 +152,10 @@ function Account({ fetchProducts, products, auth, validateRedirect }) {
                                                     <a className={activeIndex === 4 ? "nav-link active" : "nav-link"}  onClick={() => handleOnClick(4)}><i className="fi-rs-marker mr-10"></i>My Address</a>
                                                 </li>*/}
                                                 <li className="nav-item">
-                                                    <a className={activeIndex === 5 ? "nav-link active" : "nav-link"}  onClick={() => handleOnClick(5)}><i className="fi-rs-user mr-10"></i>Account details</a>
+                                                    <a className={activeIndex === 5 ? "nav-link active" : "nav-link"}  onClick={() => handleOnClick(5)}><i className="fi-rs-user mr-10"></i>{t("account-details")}</a>
                                                 </li>
                                                 <li className="nav-item">
-                                                    <a className="nav-link" onClick={signOutHandler}><i className="fi-rs-sign-out mr-10"></i>Logout</a>
+                                                    <a className="nav-link" onClick={signOutHandler}><i className="fi-rs-sign-out mr-10"></i>{t("account-logout")}</a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -160,12 +165,12 @@ function Account({ fetchProducts, products, auth, validateRedirect }) {
                                             <div className={activeIndex === 1 ? "tab-pane fade active show" : "tab-pane fade "} >
                                                 <div className="card">
                                                     <div className="card-header">
-                                                        { currentUser.first_name && <h3 className="mb-0">Hello { currentUser?.first_name }</h3>}
+                                                        { currentUser.first_name && <h3 className="mb-0">{t("account-hello")} { currentUser?.first_name }</h3>}
                                                     </div>
                                                     <div className="card-body">
                                                         <p>
-                                                            From your account dashboard. you can easily check &amp; view your <a href="#" onClick={() => handleOnClick(2)}>recent orders</a>,<br />
-                                                            manage your <a href="#" onClick={() => handleOnClick(4)}>shipping and billing addresses</a> and <a href="#" onClick={() => handleOnClick(5)}>edit your password and account details.</a>
+                                                            {t("account-intro")} <a href="#" onClick={() => handleOnClick(2)}>{t("account-orders")}</a>,<br />
+                                                            <a href="#" onClick={() => handleOnClick(4)}>{t("account-shipping")}</a> & <a href="#" onClick={() => handleOnClick(5)}>{t("account-details-info")}.</a>
                                                         </p>
                                                     </div>
                                                 </div>
@@ -173,15 +178,15 @@ function Account({ fetchProducts, products, auth, validateRedirect }) {
                                             <div className={activeIndex === 2 ? "tab-pane fade active show" : "tab-pane fade "} >
                                                 <div className="card">
                                                     <div className="card-header">
-                                                        <h3 className="mb-0">Your Orders</h3>
+                                                        <h3 className="mb-0">{t("account-orders-title")}</h3>
                                                     </div>
                                                     <div className="card-body">
                                                         <div className="table-responsive">
                                                             <table className="table">
                                                                 <thead>
                                                                     <tr>
-                                                                        <th>Order</th>
-                                                                        <th>Date</th>
+                                                                        <th>{t("account-orders-no")}</th>
+                                                                        <th>{t("account-orders-date")}</th>
                                                                         <th>Status</th>
                                                                         <th>Total</th>
                                                                         <th></th>
@@ -192,19 +197,19 @@ function Account({ fetchProducts, products, auth, validateRedirect }) {
                                                                         const orderDate = new Date(order.ordered_date);
                                                                         const shippingAddress = order.shipping_address;
                                                                         const billingAddress = order.invoice_address;
-                                                                        const orderDateString = `${getMonthName(orderDate.getMonth())} ${orderDate.getDate()}, ${orderDate.getFullYear()}`
+                                                                        const orderDateString = ` ${orderDate.getDate()}. ${getMonthNameGerman(orderDate.getMonth())} ${orderDate.getFullYear()}`
                                                                         const orderTimeString = `${orderDate.getHours()}:${orderDate.getMinutes()}`;
                                                                         return (
                                                                             <>
                                                                                 <tr key={i} className={(activeOrder === order.id) ? "bg-grey-10" : ""}>
                                                                                     <td>#{ order.id }</td>
                                                                                     <td>{ orderDateString }</td>
-                                                                                    <td> { order.ordered ? "Completed" : "Pending" }</td>
-                                                                                    <td>${ order.total_order_amount.toFixed(2) } for { order.products.length } { order.products.length > 1 ? 'items': 'item' }</td>
+                                                                                    <td> { order.ordered ? `${t("account-orders-complete")}` : `${t("account-orders-pending")}` }</td>
+                                                                                    <td>CHF { order.total_order_amount.toFixed(2) } / { order.products.length } { order.products.length > 1 ? `${t("account-orders-items")}`: `${t("account-orders-items")}` }</td>
                                                                                     <td>
                                                                                         { (activeOrder === order.id) ?
                                                                                             <button className="btn btn-xs btn-link d-block" onClick={() => setActiveOrder(null)}>Close</button>
-                                                                                            : <button className="btn btn-xs d-block" onClick={() => setActiveOrder(order.id)}>View</button>
+                                                                                            : <button className="btn btn-xs d-block" onClick={() => setActiveOrder(order.id)}>{t("account-orders-view")}</button>
                                                                                         }
                                                                                     </td>
                                                                                 </tr>
@@ -358,7 +363,7 @@ function Account({ fetchProducts, products, auth, validateRedirect }) {
                                                         <form onSubmit={profileFormSubmitHandler}>
                                                             <div className="row">
                                                                 <div className="form-group col-md-6">
-                                                                    <label>First Name</label>
+                                                                    <label>{t("account-first-name")}</label>
                                                                     <input className="form-control"
                                                                            name="fName"
                                                                            type="text"
@@ -366,7 +371,7 @@ function Account({ fetchProducts, products, auth, validateRedirect }) {
                                                                            defaultValue={currentUser.first_name} />
                                                                 </div>
                                                                 <div className="form-group col-md-6">
-                                                                    <label>Last Name</label>
+                                                                    <label>{t("account-last-name")}</label>
                                                                     <input className="form-control"
                                                                            name="lName"
                                                                            type="text"
@@ -374,7 +379,7 @@ function Account({ fetchProducts, products, auth, validateRedirect }) {
                                                                            defaultValue={currentUser.last_name} />
                                                                 </div>
                                                                 <div className="form-group col-md-12">
-                                                                    <label>Username</label>
+                                                                    <label>{t("account-username")}</label>
                                                                     <input className="form-control"
                                                                            name="username"
                                                                            type="text"
@@ -382,7 +387,7 @@ function Account({ fetchProducts, products, auth, validateRedirect }) {
                                                                            defaultValue={currentUser.username} />
                                                                 </div>
                                                                 <div className="form-group col-md-12">
-                                                                    <label>Email Address</label>
+                                                                    <label>{t("account-email")}</label>
                                                                     <input className="form-control"
                                                                            name="email"
                                                                            type="email"
@@ -390,7 +395,7 @@ function Account({ fetchProducts, products, auth, validateRedirect }) {
                                                                            readOnly />
                                                                 </div>
                                                                 <div className="form-group col-md-12">
-                                                                    <label>Phone</label>
+                                                                    <label>{t("account-phone")}</label>
                                                                     <input className="form-control"
                                                                            name="phone"
                                                                            type="tel"
@@ -405,11 +410,11 @@ function Account({ fetchProducts, products, auth, validateRedirect }) {
                                                                            type="password"
                                                                            onChange={e => setCurrentPass(e.target.value)} />
                                                                 </div>*/}
-                                                                { !showPassInput && <div className="link-primary mb-3 text-end" style={{ cursor: "pointer" }} onClick={() => setShowPassInput(true)}>Change password</div>}
+                                                                { !showPassInput && <div className="link-primary mb-3 text-end" style={{ cursor: "pointer" }} onClick={() => setShowPassInput(true)}>{t("account-pw-change")}</div>}
                                                                 { showPassInput && (
                                                                     <>
                                                                         <div className="form-group col-md-12">
-                                                                            <label>New Password</label>
+                                                                            <label>{t("account-pw-new")}</label>
                                                                             <input required={passwordChangeActive}
                                                                                    className="form-control"
                                                                                    name="newPassword"
@@ -417,7 +422,7 @@ function Account({ fetchProducts, products, auth, validateRedirect }) {
                                                                                    onChange={e => setNewPass(e.target.value)} />
                                                                         </div>
                                                                         <div className="form-group col-md-12">
-                                                                            <label>Confirm Password</label>
+                                                                            <label>{t("account-pw-confirm")}</label>
                                                                             <input required={passwordChangeActive}
                                                                                    className="form-control"
                                                                                    name="confirmPassword"
@@ -431,7 +436,7 @@ function Account({ fetchProducts, products, auth, validateRedirect }) {
                                                                 { !!(passwordError && profileError) && <small className="text-danger mb-2">Invalid profile details and password</small> }
                                                                 { !!(showPassInput && triedPassSubmit) && <small className="text-danger mb-3">Password doesn't match</small> }
                                                                 <div className="col-md-12">
-                                                                    <button type="submit" className="btn btn-fill-out submit font-weight-bold me-3" name="submit" value="Submit">Save Change</button>
+                                                                    <button type="submit" className="btn btn-fill-out submit font-weight-bold me-3" name="submit" value="Submit">{t("account-save-change")}</button>
                                                                     { (triedSubmit && success) && <small className="text-success">Saved!</small> }
                                                                 </div>
                                                             </div>
