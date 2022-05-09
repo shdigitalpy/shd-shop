@@ -20,7 +20,7 @@ function Login({ auth }) {
         signIn(data)
             .then(() => {
                 // if (res) await Router.push('/');
-                window.location.href = '/';
+                window.location.href = '/shop-cart';
             }).catch(err => {
                 setErrorMsg("Invalid username or password");
             });

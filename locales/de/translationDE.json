@@ -9,7 +9,15 @@
 
 
 
-
+  "register" : "Registration",
+  "register-already" : "Bereits ein Konto?",
+  "register-login" : "Hier anmelden",
+  "register-firstname" : "Vorname *",
+  "register-lastname" : "Nachname *",
+  "register-email" : "E-Mail *",
+  "register-pw1" : "Passwort eingeben *",
+  "register-pw2" : "Passwort bestätigen *",
+  "register-create" : "Konto erstellen",
 
 
   "about": "Über",

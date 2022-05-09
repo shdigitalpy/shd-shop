@@ -7,6 +7,15 @@
   "newsletter-subscribe": "Subscribe",
   "search-placeholder": "Search",
 
+  "register" : "Register",
+  "register-already" : "Already have an account?",
+  "register-login" : "Login here",
+ "register-firstname" : "First Name *",
+  "register-lastname" : "Last Name *",
+  "register-email" : "Email *",
+  "register-pw1" : "Enter password *",
+  "register-pw2" : "Confirm password *",
+  "register-create" : "Create account",
 
   "about": "About",
 

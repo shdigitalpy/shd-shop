@@ -384,13 +384,21 @@ const Cart = ({
                                     </table>
                                 </div>
                                 <div className="cart-action text-end">
+                                    <Link href="/page-login" >
+                                        <a className="btn " style={{ marginRight: "0.5rem" }}>
+                                            
+                                            {t("cart-sign-in")}
+                                        </a>
+                                    </Link>
+
                                     <Link href="/">
-                                        <a className="btn ">
+                                        <a className="" style={{ textDecoration: "underline" }}>
                                             <i className="fi-rs-shopping-bag mr-10"></i>
                                             {t("cart-continue")}
                                         </a>
                                     </Link>
                                 </div>
+
                                 <div className="divider center_icon mt-50 mb-50">
                                     <i className="fi-rs-fingerprint"></i>
                                 </div>

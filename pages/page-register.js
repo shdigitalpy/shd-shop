@@ -3,8 +3,10 @@ import Layout from "../components/layout/Layout";
 import Link from "next/link"
 import Router from 'next/router';
 import { signUp } from "../rest/calls";
+import { useTranslation } from 'react-i18next';
 
 function Register({ auth }) {
+
     const [errorMsg, setErrorMsg] = useState(null);
 
     const submitHandler = async (e) => {
@@ -35,6 +37,8 @@ function Register({ auth }) {
         }
     }, []);
 
+    const {t} = useTranslation();
+
     return (
         <>
             <Layout parent="Home" sub="Pages" subChild="Login & Register" authPage>
@@ -48,29 +52,29 @@ function Register({ auth }) {
                                 </div>
                                 <div className="col-lg-6 col-md-8">
                                     <div className="login_wrap widget-taber-content background-white">
-                                        <div className="padding_eight_all bg-white">
+                                        <div className="padding_eight_all bg-white p-5 mt-50">
                                             <div className="heading_s1">
-                                                <h1 className="mb-5">Register</h1>
-                                                <p className="mb-30">Already have an account? <Link href="/page-login"><a>Login here</a></Link></p>
+                                                <h1 className="mb-5">{t("register")}</h1>
+                                                <p className="mb-30">{t("register-already")} <Link href="/page-login"><a>{t("register-login")}</a></Link></p>
                                             </div>
                                             <form onSubmit={submitHandler}>
                                                 <div className="form-group">
-                                                    <input type="text" required name="firstName" placeholder="First name *" autoFocus />
+                                                    <input type="text" required name="firstName" placeholder={t("register-firstname")} autoFocus />
                                                 </div>
                                                 <div className="form-group">
-                                                    <input type="text" required name="lastName" placeholder="Last name *" />
+                                                    <input type="text" required name="lastName" placeholder={t("register-lastname")} />
                                                 </div>
                                                 {/*<div className="form-group">
                                                     <input type="text" required maxLength={150} name="username" placeholder="Username *" />
                                                 </div>*/}
                                                 <div className="form-group">
-                                                    <input type="email" required name="email" placeholder="Email *" />
+                                                    <input type="email" required name="email" placeholder={t("register-email")} />
                                                 </div>
                                                 <div className="form-group">
-                                                    <input required type="password" name="password1" placeholder="Enter password *" />
+                                                    <input required type="password" name="password1" placeholder={t("register-pw1")} />
                                                 </div>
                                                 <div className="form-group">
-                                                    <input required type="password" name="password2" placeholder="Confirm password *" />
+                                                    <input required type="password" name="password2" placeholder={t("register-pw2")} />
                                                 </div>
                                                 {/*<div className="login_footer form-group">
                                                     <div className="chek-form">
@@ -93,7 +97,7 @@ function Register({ auth }) {
                                                     <a className="text-muted" href="#">Forgot password?</a>
                                                 </div>*/}
                                                 <div className="form-group">
-                                                    <button type="submit" className="btn btn-heading btn-block hover-up" name="login">Create account</button>
+                                                    <button type="submit" className="btn btn-heading btn-block hover-up" name="login">{t("register-create")}</button>
                                                 </div>
                                             </form>
                                         </div>
