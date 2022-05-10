@@ -7,6 +7,8 @@ import {
     closeWishlistModal,
     deleteFromWishlist,
 } from "../redux/action/wishlistAction";
+import { useTranslation } from 'react-i18next';
+
 
 const Wishlist = ({
     wishlist,
@@ -16,11 +18,14 @@ const Wishlist = ({
     addToCart,
 }) => {
 
+    const {t} = useTranslation();
 
     const handleCart = (product) => {
         addToCart(product);
-        toast("Product added to Cart !");
+        toast(`${t("toastify-cart")}`);
     };
+
+
     return (
         <>
             <Layout parent="Home" sub="Shop" subChild="Wishlist">

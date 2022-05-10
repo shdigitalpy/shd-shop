@@ -13,6 +13,8 @@ import { addToWishlist, deleteFromWishlist } from "../../redux/action/wishlistAc
 import ProductTab from "../elements/ProductTab";
 import RelatedSlider from "../sliders/Related";
 import ThumbSlider from "../sliders/Thumb";
+import { useTranslation } from 'react-i18next';
+
 
 const ProductDetails = ({
     product,
@@ -30,26 +32,28 @@ const ProductDetails = ({
     const [quantity, setQuantity] = useState(1);
     const [isWishlisted, setIsWishlisted] = useState(false);
 
+    const {t} = useTranslation();
+
     const handleCart = (product) => {
         addToCart(product);
-        toast("Product added to Cart !");
+        toast(`${t("toastify-cart")}`);
     };
 
     const handleCompare = (product) => {
         addToCompare(product);
-        toast("Added to Compare list !");
+        toast(`${t("toastify-compare")}`);
     };
 
     const handleWishlist = (product) => {
         addToWishlist(product);
         setIsWishlisted(true);
-        toast("Added to Wishlist !");
+        toast(`${t("toastify-wishlist")}`);
     };
 
     const removeWishlist = (product) => {
         deleteFromWishlist(product.id);
         setIsWishlisted(false);
-        toast("Removed from Wishlist !");
+        toast(`${t("toastify-wishlist-del")}`);
     };
 
     useEffect(() => {
@@ -58,6 +62,8 @@ const ProductDetails = ({
     }, []);
 
     const inCart = cartItems.find((cartItem) => cartItem.id === product.id);
+
+
 
     return (
         <>
@@ -68,26 +74,28 @@ const ProductDetails = ({
                             <div className="product-detail accordion-detail">
                                 <div className="row mb-50  mt-30">
                                     <div className="col-md-6 col-sm-12 col-xs-12 mb-md-0 mb-sm-5">
+                                        
+
                                         <div className="detail-gallery">
-                                            <span className="zoom-icon">
-                                                <i className="fi-rs-search"></i>
-                                            </span>
+                                            
 
                                             <div className="product-image-slider">
                                                 <ThumbSlider product={product} />
                                             </div>
                                         </div>
+
+
                                     </div>
                                     <div className="col-md-6 col-sm-12 col-xs-12">
                                         <div className="detail-info  pr-30 pl-30">
-                                            <span className="stock-status out-stock"> Sale Off </span>
+                                            <span className="stock-status out-stock"> {t("product-saleoff")} </span>
                                             <h2 className="title-detail">{product.title}</h2>
                                             <div className="product-detail-rating">
                                                 <div className="product-rate-cover text-end">
                                                     <div className="product-rate d-inline-block">
                                                         <div className="product-rating" style={{ width: `${(product.total_stars / 5) * 100}%` }}></div>
                                                     </div>
-                                                    <span className="font-small ml-5 text-muted"> ({product.count_review} reviews)</span>
+                                                    <span className="font-small ml-5 text-muted"> ({product.count_review} {t("product-review")})</span>
                                                 </div>
                                             </div>
                                             <div className="clearfix product-price-cover">
@@ -102,7 +110,7 @@ const ProductDetails = ({
 
                                                         : 
 
-                                                        <span>{ product.discount && <span className="save-price font-md color3 ml-15">{product.discount.percentage}% Off</span> }
+                                                        <span>{ product.discount && <span className="save-price font-md color3 ml-15">{product.discount.percentage}% {t("product-off")}</span> }
                                                         <span className="old-price font-md ml-15"> CHF {product.oldPrice} </span> 
                                                         </span>
                                                         }
@@ -126,6 +134,16 @@ const ProductDetails = ({
                                                         </li>
                                                     ))}
                                                 </ul>
+
+                                                {/*<ul className="list-filter color-filter">
+                                                    {product.attribut_product.map((clr, i) => (
+                                                        <li key={i}>
+                                                            <a href="#">
+                                                                <span></span>
+                                                            </a>
+                                                        </li>
+                                                    ))}
+                                                </ul>*/}
                                             </div>
                                             {/*<div className="attr-detail attr-size">
                                                 <strong className="mr-10">Size</strong>
@@ -165,7 +183,7 @@ const ProductDetails = ({
                                                         }
                                                         className="button button-add-to-cart"
                                                     >
-                                                        Add to cart
+                                                       {t("product-addcart")}
                                                     </button>
                                                     { !isWishlisted && (
                                                         <a aria-label="Add To Wishlist" className="action-btn hover-up" onClick={(e) => handleWishlist(product)}>

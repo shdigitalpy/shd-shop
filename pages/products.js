@@ -14,6 +14,8 @@ import SingleProduct from "./../components/ecommerce/SingleProduct";
 import Layout from "./../components/layout/Layout";
 import { fetchProducts } from "../redux/action/product";
 import Loading from "../components/elements/Loading";
+import { useTranslation } from 'react-i18next';
+
 
 const Products = ({ filteredProducts, productFilters, fetchProducts }) => {
     let Router = useRouter(),
@@ -87,6 +89,12 @@ const Products = ({ filteredProducts, productFilters, fetchProducts }) => {
         setCurrentPage(1);
         setPages(Math.ceil(products.items.length / Number(e.target.value)));
     };
+
+    const {t} = useTranslation();
+
+    const translation = t("products-show")
+
+    const transpricerangetitle = t("products-price-range")
     return (
         <>
             <Layout noBreadcrumb="d-none">
@@ -97,7 +105,7 @@ const Products = ({ filteredProducts, productFilters, fetchProducts }) => {
                             <div className="col-lg-4-5">
                                 { !loaded ? <Loading /> :
                                     !getPaginatedProducts.length && (
-                                        <h3>No Products Found </h3>
+                                        <h3>{t("products-nofound")}</h3>
                                     )
                                 }
 
@@ -106,11 +114,11 @@ const Products = ({ filteredProducts, productFilters, fetchProducts }) => {
                                         <div className="shop-product-fillter">
                                             <div className="totall-product">
                                                 <p>
-                                                    We found
+                                                   {t("products-wefound")}
                                                     <strong className="text-brand">
                                                         {products.items.length}
                                                     </strong>
-                                                    items for you!
+                                                    {t("products-xproducts")}
                                                 </p>
                                             </div>
                                             <div className="sort-by-product-area">
@@ -118,6 +126,7 @@ const Products = ({ filteredProducts, productFilters, fetchProducts }) => {
                                                     <ShowSelect
                                                         selectChange={selectChange}
                                                         showLimit={showLimit}
+                                                        translation={translation}
                                                     />
                                                 </div>
                                                 <div className="sort-by-cover">
@@ -162,7 +171,7 @@ const Products = ({ filteredProducts, productFilters, fetchProducts }) => {
                                 </div>
 
                                 <div className="sidebar-widget price_range range mb-30">
-                                <h5 className="section-title style-1 mb-30">Fill by price</h5>
+                                <h5 className="section-title style-1 mb-30">{t("products-price-sort")}</h5>
 
                                     <div className="price-filter">
                                         <div className="price-filter-inner">
@@ -173,18 +182,15 @@ const Products = ({ filteredProducts, productFilters, fetchProducts }) => {
                                         </div>
                                     </div>
 
-                                    {/*<div className="list-group">
+                                    <div className="list-group">
                                         <div className="list-group-item mb-10 mt-10">
                                             <label className="fw-900">
                                                 Color
                                             </label>
                                             <VendorFilter />
-                                            <label className="fw-900 mt-15">
-                                                Item Condition
-                                            </label>
-                                            <SizeFilter />
+                                            
                                         </div>
-                                    </div>*/}
+                                    </div>
                                     <br />
                                     <br />
                                     <br />

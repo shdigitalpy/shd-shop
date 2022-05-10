@@ -4066,11 +4066,13 @@ table .product-thumbnail img {
 }
 
 .product-cart-wrap .product-badges span.hot {
-  background-color: #92140C;
+  background-color: #34421e;
+
 }
 
 .product-cart-wrap .product-badges span.new {
-  background-color: #111D4A;
+  background-color: #f3e8e8;
+  color: var(--grey);
 }
 
 .product-cart-wrap .product-badges span.sale {
@@ -5098,7 +5100,7 @@ table .product-thumbnail img {
 }
 
 .detail-info .product-price .current-price {
-  font-size: 58px;
+  font-size: 45px;
   text-decoration: none;
   font-weight: 900;
 }

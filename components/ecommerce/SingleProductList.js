@@ -6,6 +6,7 @@ import { addToCart } from "../../redux/action/cart";
 import { addToCompare } from "../../redux/action/compareAction";
 import { openQuickView } from "../../redux/action/quickViewAction";
 import { addToWishlist } from "../../redux/action/wishlistAction";
+import { useTranslation } from 'react-i18next';
 
 const SingleProductList = ({
     product,
@@ -14,19 +15,21 @@ const SingleProductList = ({
     addToWishlist,
     openQuickView,
 }) => {
+
+    const {t} = useTranslation();
     const handleCart = (product) => {
         addToCart(product);
-        toast("Product added to Cart !");
+        toast(`${t("toastify-cart")}`);
     };
 
     const handleCompare = (product) => {
         addToCompare(product);
-        toast("Added to Compare list !");
+        toast(`${t("toastify-compare")}`);
     };
 
     const handleWishlist = (product) => {
         addToWishlist(product);
-        toast("Added to Wishlist !");
+        toast(`${t("toastify-wishlist")}`);
     };
 
     return (

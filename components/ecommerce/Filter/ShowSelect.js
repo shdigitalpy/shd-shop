@@ -1,11 +1,13 @@
-function SelectOp({ selectChange, showLimit }) {
+
+
+function SelectOp({ selectChange, showLimit, translation }) {
     return (
         <>
             <div className="sort-by-product-wrap">
                 <div className="sort-by">
                     <span>
                         <i className="fi-rs-apps"></i>
-                        Show:
+                        {translation}
                     </span>
                 </div>
                 <div className="sort-by-dropdown-wrap custom-select">

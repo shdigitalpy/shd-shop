@@ -6,6 +6,7 @@ import { addToCart } from "../../redux/action/cart";
 import { addToCompare } from "../../redux/action/compareAction";
 import { openQuickView } from "../../redux/action/quickViewAction";
 import { addToWishlist, deleteFromWishlist } from "../../redux/action/wishlistAction";
+import { useTranslation } from 'react-i18next';
 
 const SingleProduct = ({
     product,
@@ -17,27 +18,27 @@ const SingleProduct = ({
     wishlist,
 }) => {
     const [isWishlisted, setIsWishlisted] = useState(false);
-
+    const {t} = useTranslation();
     const handleCart = (product) => {
         addToCart(product);
-        toast("Product added to Cart !");
+        toast(`${t("toastify-cart")}`);
     };
 
     const handleCompare = (product) => {
         addToCompare(product);
-        toast("Added to Compare list !");
+        toast(`${t("toastify-compare")}`);
     };
 
     const handleWishlist = (product) => {
         addToWishlist(product);
         setIsWishlisted(true);
-        toast("Added to Wishlist !");
+        toast(`${t("toastify-wishlist")}`);
     };
 
     const removeWishlist = (product) => {
         deleteFromWishlist(product.id);
         setIsWishlisted(false);
-        toast("Removed From Wishlist !");
+        toast(`${t("toastify-wishlist-del")}`);
     };
 
     useEffect(() => {
@@ -70,7 +71,7 @@ const SingleProduct = ({
                     </div>
                     <div className="product-action-1">
                         <a
-                            aria-label="Quick view"
+                            aria-label={t("actions-quick")}
                             className="action-btn hover-up"
                             data-bs-toggle="modal"
                             onClick={(e) => openQuickView(product)}
@@ -79,7 +80,7 @@ const SingleProduct = ({
                         </a>
                         { !isWishlisted && (
                             <a
-                                aria-label="Add To Wishlist"
+                                aria-label={t("actions-wishlist-click")}
                                 className="action-btn hover-up"
                                 onClick={(e) => handleWishlist(product)}
                             >
@@ -88,7 +89,7 @@ const SingleProduct = ({
                         )}
                         { isWishlisted && (
                             <a
-                                aria-label="Remove from Wishlist"
+                                aria-label={t("actions-wishlist-remove")}
                                 className="action-btn hover-up"
                                 onClick={(e) => removeWishlist(product)}
                             >
@@ -153,7 +154,7 @@ const SingleProduct = ({
                                     ({product.count_review})
                                 </span>
                             </>
-                        ) : <p>Not rated</p>}
+                        ) : <p>{t("not-rated")}</p>}
                     </div>
 
                     {/*<div>

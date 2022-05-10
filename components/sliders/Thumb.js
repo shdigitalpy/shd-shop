@@ -13,8 +13,8 @@ const ThumbSlider = ({ product }) => {
         <div>
             <Swiper
                 style={{
-                    "--swiper-navigation-color": "#fff",
-                    "--swiper-pagination-color": "#fff",
+                    "--swiper-navigation-color": "#34421e",
+                    "--swiper-pagination-color": "#34421e",
                 }}
                 loop={true}
                 spaceBetween={10}
@@ -25,21 +25,25 @@ const ThumbSlider = ({ product }) => {
                 {product.product_gallery.map((item, i) => (
                     <SwiperSlide key={i}>
                         <img src={item.image} alt={item.alt} />
-                        {/* <Zoom
-                            img={item.thumb}
-                            zoomScale={5}
-                            width={500}
+                        
+                        {/*<Zoom
+                            img={item.image}
+
+                            zoomScale={2}
+                            width={550}
                             height={500}
-                            ransitionTime={0.5}
-                        /> */}
+                            transitionTime={0.5}
+
+                        />*/}
+
                     </SwiperSlide>
                 ))}
             </Swiper>
             <Swiper
                 onSwiper={setThumbsSwiper}
-                loop={true}
+                loop={false}
                 spaceBetween={10}
-                slidesPerView={4}
+                slidesPerView={5}
                 freeMode={true}
                 watchSlidesProgress={true}
                 className="mySwiper"

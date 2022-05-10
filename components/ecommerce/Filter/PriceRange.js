@@ -10,7 +10,7 @@ const PriceRange = ({ updateProductFilters }) => {
     const Router = useRouter();
     const searchTerm = Router.query.search;
 
-    const [price, setPrice] = useState({ value: { min: 0, max: 500 } });
+    const [price, setPrice] = useState({ value: { min: 0, max: 200 } });
     const [active, setActive] = useState(0);
 
     useEffect(() => {
@@ -61,7 +61,7 @@ const PriceRange = ({ updateProductFilters }) => {
         <>
             <InputRange
                 formatLabel={(value) => `${value}`}
-                maxValue={500}
+                maxValue={200}
                 minValue={0}
                 value={price.value}
                 onChange={(value) => setPrice({ value })}
@@ -76,7 +76,7 @@ const PriceRange = ({ updateProductFilters }) => {
                             className="form-check-input"
                             id={i} onChange={() => setPrice({ value: { min: item.min, max: item.max } })}
                         />
-                        <label htmlFor={i} className="form-check-label">${item.min} - ${item.max}</label>
+                        <label htmlFor={i} className="form-check-label">CHF {item.min} - CHF {item.max}</label>
 
                         <br/>
                     </>

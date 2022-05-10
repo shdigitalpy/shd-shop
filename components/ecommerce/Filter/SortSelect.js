@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { updateProductFilters } from "../../../redux/action/productFiltersAction";
+import { useTranslation } from 'react-i18next';
 
 const SortSelect = ({ updateProductFilters }) => {
     const Router = useRouter();
@@ -21,22 +22,24 @@ const SortSelect = ({ updateProductFilters }) => {
         setFeatured(e.target.value);
     };
 
+    const {t} = useTranslation();
+
     return (
         <>
             <div className="sort-by-product-wrap">
                 <div className="sort-by">
                     <span>
                         <i className="fi-rs-apps-sort"></i>
-                        Sort by:
+                        {t("products-sort")}
                     </span>
                 </div>
                 <div className="sort-by-dropdown-wrap custom-select">
                     <select onChange={(e) => seleceOption(e)}>
-                        <option value="">Defaults</option>
-                        <option value="featured">Featured</option>
-                        <option value="trending">Trending</option>
-                        <option value="lowToHigh">Low To High</option>
-                        <option value="highToLow">High To Low</option>
+                        <option value="">Standard</option>
+                        <option value="featured">{t("products-featured")}</option>
+                        <option value="trending">{t("products-trending")}</option>
+                        <option value="lowToHigh">{t("products-lowtohigh")}</option>
+                        <option value="highToLow">{t("products-hightolow")}</option>
                     </select>
                 </div>
             </div>
