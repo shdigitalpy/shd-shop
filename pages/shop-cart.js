@@ -706,29 +706,7 @@ const Cart = ({
                                                                     { couponValid === false && <small className="text-danger">{t("cart-coupon-error")}</small> }
                                                                 </>
                                                             )}
-                                                            {/*<form onSubmit={applyCouponHandler}>
-                                                                <div className="form-row row justify-content-center">
-                                                                    <div className="form-group col-lg-6">
-                                                                        <input
-                                                                            className="font-medium"
-                                                                            name="coupon"
-                                                                            placeholder="Enter coupon code"
-                                                                        />
-                                                                    </div>
-                                                                    <div className="form-group col-lg-6">
-                                                                        <button className="btn btn-sm" type="submit">
-                                                                            <i className="fi-rs-label mr-10"/>
-                                                                            Apply
-                                                                        </button>
-                                                                    </div>
-                                                                </div>
-                                                                { couponValid !== null && (
-                                                                    <>
-                                                                        { couponValid && <small className="text-success">Coupon code applied!</small> }
-                                                                        { couponValid === false && <small className="text-danger">Invalid coupon code!</small> }
-                                                                    </>
-                                                                )}
-                                                            </form>*/}
+                                                            
                                                         </div>
                                                     </div>
                                                 </div>
@@ -802,6 +780,11 @@ const Cart = ({
 
                                             <div className="custome-checkbox mb-3">
                                             <br />
+                                            <br />
+
+
+                                            <br />
+                                            <br />
                                             <input className="form-check-input" type="checkbox" required
                                             id="flexCheckAGB" />
                                             <label className="form-check-label"
@@ -811,7 +794,7 @@ const Cart = ({
                                                         </div>
 
                                             
-                                            <br />
+
                                             { (price() > 0) && (
                                                 <button type="submit" className="btn" style={{ width: "100%" }} onClick={redirectToCheckout}>
                                                     <i className="fi-rs-box-alt mr-10"></i>

@@ -16,6 +16,8 @@ import ThumbSlider from "../sliders/Thumb";
 import { useTranslation } from 'react-i18next';
 
 
+
+
 const ProductDetails = ({
     product,
     users,
@@ -63,7 +65,7 @@ const ProductDetails = ({
 
     const inCart = cartItems.find((cartItem) => cartItem.id === product.id);
 
-
+    console.log("attribut", product)
 
     return (
         <>
@@ -124,26 +126,28 @@ const ProductDetails = ({
                                                 <p className="font-lg">{product.desc}</p>
                                             </div>
                                             <div className="attr-detail attr-color mb-15">
-                                                <strong className="mr-10">Color</strong>
+                                                <strong className="mr-10">Gewicht</strong>
                                                 <ul className="list-filter color-filter">
-                                                    {product.variations.map((clr, i) => (
+                                                    {product.attribut_product.map((clr, i) => (
                                                         <li key={i}>
                                                             <a href="#">
-                                                                <span className={`product-color-${clr}`}></span>
+                                                                <span style={{padding: "1rem",}}>{clr.name}</span>
                                                             </a>
                                                         </li>
                                                     ))}
                                                 </ul>
-
-                                                {/*<ul className="list-filter color-filter">
+                                                </div>
+                                                <div className="attr-detail attr-color mb-15">
+                                                <strong className="mr-10">Grösse</strong>
+                                                <ul className="list-filter color-filter">
                                                     {product.attribut_product.map((clr, i) => (
                                                         <li key={i}>
                                                             <a href="#">
-                                                                <span></span>
+                                                                <span style={{padding: "1rem",}}>{clr.name}</span>
                                                             </a>
                                                         </li>
                                                     ))}
-                                                </ul>*/}
+                                                </ul>
                                             </div>
                                             {/*<div className="attr-detail attr-size">
                                                 <strong className="mr-10">Size</strong>
