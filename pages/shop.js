@@ -15,7 +15,7 @@ import Layout from "./../components/layout/Layout";
 import { fetchProducts } from "../redux/action/product";
 import Loading from "../components/elements/Loading";
 
-const Products = ({ filteredProducts, productFilters, fetchProducts }) => {
+const Shop = ({ filteredProducts, productFilters, fetchProducts }) => {
     let Router = useRouter(),
         searchTerm = Router.query.search,
         showLimit = 12,
@@ -87,13 +87,10 @@ const Products = ({ filteredProducts, productFilters, fetchProducts }) => {
         setCurrentPage(1);
         setPages(Math.ceil(products.items.length / Number(e.target.value)));
     };
-
-
-
     return (
         <>
             <Layout noBreadcrumb="d-none">
-            <Breadcrumb2/>
+                <Breadcrumb2/>
                 <section className="mt-50 mb-50">
                     <div className="container mb-30">
                         <div className="row flex-row-reverse">
@@ -165,7 +162,7 @@ const Products = ({ filteredProducts, productFilters, fetchProducts }) => {
                                 </div>
 
                                 <div className="sidebar-widget price_range range mb-30">
-                                <h5 className="section-title style-1 mb-30">Fill by price</h5>
+                                    <h5 className="section-title style-1 mb-30">Fill by price</h5>
 
                                     <div className="price-filter">
                                         <div className="price-filter-inner">
@@ -327,4 +324,4 @@ const mapDidpatchToProps = {
     // fetchMoreProduct,
 };
 
-export default connect(mapStateToProps, mapDidpatchToProps)(Products);
+export default connect(mapStateToProps, mapDidpatchToProps)(Shop);

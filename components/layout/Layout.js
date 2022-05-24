@@ -14,6 +14,7 @@ const Layout = ({
     parent,
     sub,
     subChild,
+    category,
     noBreadcrumb,
     headerStyle,
     authPage = false,
@@ -40,9 +41,9 @@ const Layout = ({
 
             {isToggled && <div className="body-overlay-1" onClick={toggleClick}></div>}
 
-            <motion.div 
-                    initial="pageInitial" 
-                    animate="pageAnimate" 
+            <motion.div
+                    initial="pageInitial"
+                    animate="pageAnimate"
                     transition={transition}
                     variants={{
                       pageInitial: {
@@ -55,7 +56,7 @@ const Layout = ({
             <Header headerStyle={headerStyle} isToggled={isToggled} toggleClick={toggleClick} authPage={authPage} />
             <MobileMenu isToggled={isToggled} toggleClick={toggleClick} />
             <main className="main">
-                { !authPage && <Breadcrumb parent={parent} sub={sub} subChild={subChild} noBreadcrumb={noBreadcrumb} /> }
+                { !authPage && <Breadcrumb parent={parent} sub={sub} subChild={subChild} category={category} noBreadcrumb={noBreadcrumb} /> }
                 {children}
             </main>
             </motion.div>

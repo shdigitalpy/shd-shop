@@ -14,7 +14,7 @@ const Banner5 = () => {
                             Bio  <br />
                             Hundefutter
                         </h4>
-                        <Link href="/products"><a className="btn btn-xs">
+                        <Link href="/shop"><a className="btn btn-xs">
                             Kaufen <i className="fi-rs-arrow-small-right"></i>
                         </a></Link>
                     </div>
@@ -30,9 +30,9 @@ const Banner5 = () => {
                         <h4>
                             Hundezubehör
                             <br />
-                            
+
                         </h4>
-                        <Link href="/products"><a className="btn btn-xs">
+                        <Link href="/shop"><a className="btn btn-xs">
                             Kaufen <i className="fi-rs-arrow-small-right"></i>
                         </a></Link>
                     </div>
@@ -47,9 +47,9 @@ const Banner5 = () => {
                     <div className="banner-text">
                         <h4>
                             Hundebetten <br />
-                            
+
                         </h4>
-                        <Link href="/products"><a className="btn btn-xs">
+                        <Link href="/shop"><a className="btn btn-xs">
                             Kaufen <i className="fi-rs-arrow-small-right"></i>
                         </a></Link>
                     </div>

@@ -41,7 +41,7 @@ TABLE CONTENT
   --light: #f4f5f9;
   --blue: #5a97fa;
   --darkblue: #253d4e;
-  
+
 }
 /*RESET*/
 html, body, div, span, applet, object, iframe,
@@ -1337,6 +1337,15 @@ textarea:focus {
   border-radius: 0 0 4px 4px;
   padding: 15px;
   min-width: 220px;
+}
+
+.attribut-dropdown {
+  color: green;
+  background-color: white;
+  max-width: 100px;
+  padding: 10px;
+  border: 2px solid green;
+  border-radius: 5px;
 }
 
 .select2-dropdown .select2-search--dropdown {

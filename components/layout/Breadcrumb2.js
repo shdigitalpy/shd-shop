@@ -8,9 +8,9 @@ const Breadcrumb2 = ({parent, sub, subChild, noBreadcrumb}) => {
     const [titlex, setTitlex] = useState(null);
 
     useEffect(() => {
-        setTitlex(router.query.cat);
+        setTitlex(router.query.category);
         console.log("dd", titlex);
-    }, []);
+    }, [router.query.category]);
     return (
         <>
             <div className="page-header mt-30 mb-50">
@@ -21,7 +21,7 @@ const Breadcrumb2 = ({parent, sub, subChild, noBreadcrumb}) => {
                             <h1 className="mb-15 text-capitalize">{titlex ? titlex : "Category"}</h1>
                             <div className="breadcrumb">
                                 <Link href="/"><a rel="nofollow"><i className="fi-rs-home mr-5"></i>Home</a></Link>
-                                <span></span> Shop <span></span> {titlex}
+                                <span></span><Link href="/shop"><a rel="nofollow">Shop</a></Link><span></span> {titlex}
                             </div>
                         </div>
                         <div className="col-xl-9 text-end d-none d-xl-block">

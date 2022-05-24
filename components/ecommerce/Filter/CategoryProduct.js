@@ -14,12 +14,7 @@ const CategoryProduct = ({ updateProductCategory }) => {
         e.preventDefault();
         // removeSearchTerm();
         updateProductCategory(category);
-        router.push({
-            pathname: "/products",
-            query: {
-                cat: category, //
-            },
-        });
+        router.push(`/shop/${category}`);
     };
 
     useEffect(() => {

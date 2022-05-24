@@ -18,19 +18,19 @@ const BlogSidebar = () => {
                     <h5 className="section-title style-1 mb-30">Category</h5>
                     <ul>
                         <li>
-                            <Link href="/products"><a> <img src="/assets/imgs/theme/icons/category-1.svg" alt="" />Milks & Dairies</a></Link><span className="count">30</span>
+                            <Link href="/shop"><a> <img src="/assets/imgs/theme/icons/category-1.svg" alt="" />Milks & Dairies</a></Link><span className="count">30</span>
                         </li>
                         <li>
-                            <Link href="/products"><a> <img src="/assets/imgs/theme/icons/category-2.svg" alt="" />Clothing</a></Link><span className="count">35</span>
+                            <Link href="/shop"><a> <img src="/assets/imgs/theme/icons/category-2.svg" alt="" />Clothing</a></Link><span className="count">35</span>
                         </li>
                         <li>
-                            <Link href="/products"><a> <img src="/assets/imgs/theme/icons/category-3.svg" alt="" />Pet Foods </a></Link><span className="count">42</span>
+                            <Link href="/shop"><a> <img src="/assets/imgs/theme/icons/category-3.svg" alt="" />Pet Foods </a></Link><span className="count">42</span>
                         </li>
                         <li>
-                            <Link href="/products"><a> <img src="/assets/imgs/theme/icons/category-4.svg" alt="" />Baking material</a></Link><span className="count">68</span>
+                            <Link href="/shop"><a> <img src="/assets/imgs/theme/icons/category-4.svg" alt="" />Baking material</a></Link><span className="count">68</span>
                         </li>
                         <li>
-                            <Link href="/products"><a> <img src="/assets/imgs/theme/icons/category-5.svg" alt="" />Fresh Fruit</a></Link><span className="count">87</span>
+                            <Link href="/shop"><a> <img src="/assets/imgs/theme/icons/category-5.svg" alt="" />Fresh Fruit</a></Link><span className="count">87</span>
                         </li>
                     </ul>
                 </div>
@@ -54,7 +54,7 @@ const BlogSidebar = () => {
                             <img src="/assets/imgs/shop/thumbnail-4.jpg" alt="#" />
                         </div>
                         <div className="content pt-10">
-                            <h6><Link href="/products"><a>Chen Sweater</a></Link></h6>
+                            <h6><Link href="/shop"><a>Chen Sweater</a></Link></h6>
                             <p className="price mb-0 mt-5">$89.50</p>
                             <div className="product-rate">
                                 <div className="product-rating" style={{ "width": "80%" }}></div>
@@ -66,7 +66,7 @@ const BlogSidebar = () => {
                             <img src="/assets/imgs/shop/thumbnail-5.jpg" alt="#" />
                         </div>
                         <div className="content pt-10">
-                            <h6><Link href="/products"><a>Colorful Jacket</a></Link></h6>
+                            <h6><Link href="/shop"><a>Colorful Jacket</a></Link></h6>
                             <p className="price mb-0 mt-5">$25</p>
                             <div className="product-rate">
                                 <div className="product-rating" style={{ "width": "60%" }}></div>
@@ -78,7 +78,7 @@ const BlogSidebar = () => {
                             <img src="/assets/imgs/shop/thumbnail-6.jpg" alt="#" />
                         </div>
                         <div className="content pt-10">
-                            <h6><Link href="/products"><a>Lorem, ipsum</a></Link></h6>
+                            <h6><Link href="/shop"><a>Lorem, ipsum</a></Link></h6>
                             <p className="price mb-0 mt-5">$25</p>
                             <div className="product-rate">
                                 <div className="product-rating" style={{ "width": "60%" }}></div>

@@ -15,7 +15,7 @@ const Deals1 = ({ product, addToCart }) => {
             <div className="product-cart-wrap style-2 wow animate__animated animate__fadeInUp" data-wow-delay="0">
                 <div className="product-img-action-wrap">
                     <div className="product-img">
-                        <Link href="/products">
+                        <Link href="/shop">
                             <a>
                                 <img src={product.discount.banner} alt="" />
                             </a>

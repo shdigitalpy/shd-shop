@@ -2,7 +2,7 @@ import React from "react";
 
 import Link from "next/link"
 
-const Breadcrumb = ({parent, sub, subChild, noBreadcrumb}) => {
+const Breadcrumb = ({parent, sub, subChild, category, noBreadcrumb}) => {
     return (
         <>
             <div className={`page-header breadcrumb-wrap ${noBreadcrumb}`}>
@@ -12,7 +12,8 @@ const Breadcrumb = ({parent, sub, subChild, noBreadcrumb}) => {
                             {parent}
                         </a>
                         </Link>
-                        <span></span> {sub}
+                        <span></span><Link href="/shop"><a>{sub}</a></Link>
+                        <span></span><Link href={`/shop/${category}`}><a>{category}</a></Link>
                         <span></span> {subChild}
                     </div>
                 </div>

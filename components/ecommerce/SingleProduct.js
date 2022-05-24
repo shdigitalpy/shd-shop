@@ -52,8 +52,8 @@ const SingleProduct = ({
                 <div className="product-img-action-wrap">
                     <div className="product-img product-img-zoom">
                         <Link
-                            href="/products/[slug]"
-                            as={`/products/${product.slug}`}
+                            href={`/shop/${product.category1}/[slug]`}
+                            as={`/shop/${product.category1}/${product.slug}`}
                         >
                             <a>
                                 { product.product_image[0] && <img
@@ -127,14 +127,14 @@ const SingleProduct = ({
                 </div>
                 <div className="product-content-wrap">
                     <div className="product-category">
-                        <Link href="/products">
+                        <Link href="/shop">
                             <a>{product.brand}</a>
                         </Link>
                     </div>
                     <h2>
                         <Link
-                            href="/products/[slug]"
-                            as={`/products/${product.slug}`}
+                            href={`/shop/${product.category1}/[slug]`}
+                            as={`/shop/${product.category1}/${product.slug}`}
                         >
                             <a>{product.title}</a>
                         </Link>
@@ -165,23 +165,13 @@ const SingleProduct = ({
 
                     <div className="product-card-bottom">
                         <div className="product-price">
-                            <span>CHF {product.price} </span>
-                            
-
+                            <span>CHF {product.price.toFixed(2)} </span>
                             {product.oldPrice ?
-
-
                                 <span className="old-price"><br />CHF {product.oldPrice}</span>
-
-
-                                : 
+                                :
                                 <p><br/></p>
 
-
                             }
-
-                            
-                        
 
 
                         </div>

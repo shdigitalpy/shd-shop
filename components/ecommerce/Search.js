@@ -11,7 +11,7 @@ const Search = () => {
     const handleSearch = () => {
         console.log("click");
         router.push({
-            pathname: "/products",
+            pathname: "/shop",
             query: {
                 search: searchTerm,
             },

@@ -15,12 +15,7 @@ const CategoryProductMainMenu = ({ updateProductCategory }) => {
         e.preventDefault();
         // removeSearchTerm();
         updateProductCategory(category);
-        router.push({
-            pathname: "/products",
-            query: {
-                cat: category, //
-            },
-        });
+        router.push(`/shop/${category}`);
     };
 
     useEffect(() => {
@@ -44,10 +39,10 @@ const CategoryProductMainMenu = ({ updateProductCategory }) => {
 
         <div className="main-menu main-menu-padding-1 main-menu-lh-2 d-none d-lg-block  font-heading">
                                     <nav>
-                                        
+
 
             <ul>
-                
+
                 { !!categories.length && categories.map(cat => (
                     <li onClick={(e) => selectCategory(e, cat.name)} key={cat.name}
                         className={active === cat.name ? "active" : ""}>
@@ -62,7 +57,7 @@ const CategoryProductMainMenu = ({ updateProductCategory }) => {
                                                     src="/assets/imgs/theme/icons/icon-hot.svg"
                                                     alt="hot deals"
                                                 />
-                                                <Link href="/products"><a>
+                                                <Link href="/shop"><a>
                                                     Aktionen
                                                 </a>
                                                 </Link>
@@ -70,17 +65,17 @@ const CategoryProductMainMenu = ({ updateProductCategory }) => {
 
 
 
-                                            
+
                                             <li>
                                                 <Link href="/blog-category-list">
                                                     <a>
                                                         Blog
-                                                        
+
                                                     </a>
                                                 </Link>
-                                                
+
                                             </li>
-                                            
+
                                         </ul>
                                     </nav>
                                     </div>

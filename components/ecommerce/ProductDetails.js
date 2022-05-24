@@ -15,9 +15,6 @@ import RelatedSlider from "../sliders/Related";
 import ThumbSlider from "../sliders/Thumb";
 import { useTranslation } from 'react-i18next';
 
-
-
-
 const ProductDetails = ({
     product,
     users,
@@ -33,6 +30,8 @@ const ProductDetails = ({
 }) => {
     const [quantity, setQuantity] = useState(1);
     const [isWishlisted, setIsWishlisted] = useState(false);
+    const [attributProduct, setAttributProduct] = useState(null);
+    const [price, setPrice] = useState(0);
 
     const {t} = useTranslation();
 
@@ -58,14 +57,39 @@ const ProductDetails = ({
         toast(`${t("toastify-wishlist-del")}`);
     };
 
+    const attributChangeHandler = (e) => {
+        const amount = e.target.value;
+        if (!isNaN(amount)) {
+            setPrice(amount);
+        }
+    };
+
     useEffect(() => {
         const wishlisted = wishlist.items.find(item => item.id === product.id);
         setIsWishlisted(!!wishlisted);
+
+        if (product.attribut_product.length > 0) {
+            const attributeNames = product.attribut_product
+                .map(item => item.value.name)
+                .filter((item,i,allItems) => i == allItems.indexOf(item));
+
+            // console.log("temp ", attributeNames)
+
+            const updatedAttributProduct = attributeNames.map(name => ({
+                attributName: name,
+                attributes: product.attribut_product.filter(item => item.value.name === name)
+                    .sort((item1, item2) => item1.sort - item2.sort),
+            }));
+
+            setPrice(updatedAttributProduct[0].attributes[0].amount)
+            setAttributProduct(updatedAttributProduct);
+            console.log("Attribut product ", updatedAttributProduct);
+        } else {
+            setPrice(product.price);
+        }
     }, []);
 
     const inCart = cartItems.find((cartItem) => cartItem.id === product.id);
-
-    console.log("attribut", product)
 
     return (
         <>
@@ -76,17 +100,11 @@ const ProductDetails = ({
                             <div className="product-detail accordion-detail">
                                 <div className="row mb-50  mt-30">
                                     <div className="col-md-6 col-sm-12 col-xs-12 mb-md-0 mb-sm-5">
-                                        
-
                                         <div className="detail-gallery">
-                                            
-
                                             <div className="product-image-slider">
                                                 <ThumbSlider product={product} />
                                             </div>
                                         </div>
-
-
                                     </div>
                                     <div className="col-md-6 col-sm-12 col-xs-12">
                                         <div className="detail-info  pr-30 pl-30">
@@ -102,23 +120,13 @@ const ProductDetails = ({
                                             </div>
                                             <div className="clearfix product-price-cover">
                                                 <div className="product-price primary-color float-left">
-                                                    <span className="current-price  text-brand">CHF {product.price}</span>
-                                                    
-
-                                                    {product.oldPrice == null ?
-
-
-                                                        <p></p>
-
-                                                        : 
-
+                                                    <span className="current-price  text-brand">CHF { price.toFixed(2) }</span>
+                                                    {(product.oldPrice == null || attributProduct) ?
+                                                        <p></p> :
                                                         <span>{ product.discount && <span className="save-price font-md color3 ml-15">{product.discount.percentage}% {t("product-off")}</span> }
-                                                        <span className="old-price font-md ml-15"> CHF {product.oldPrice} </span> 
+                                                        <span className="old-price font-md ml-15"> CHF {product.oldPrice} </span>
                                                         </span>
-                                                        }
-
-
-                                                    
+                                                    }
                                                 </div>
                                             </div>
 
@@ -126,29 +134,20 @@ const ProductDetails = ({
                                                 <p className="font-lg">{product.desc}</p>
                                             </div>
                                             <div className="attr-detail attr-color mb-15">
-                                                <strong className="mr-10">Gewicht</strong>
-                                                <ul className="list-filter color-filter">
-                                                    {product.attribut_product.map((clr, i) => (
-                                                        <li key={i}>
-                                                            <a href="#">
-                                                                <span style={{padding: "1rem",}}>{clr.name}</span>
-                                                            </a>
-                                                        </li>
-                                                    ))}
-                                                </ul>
-                                                </div>
-                                                <div className="attr-detail attr-color mb-15">
-                                                <strong className="mr-10">Grösse</strong>
-                                                <ul className="list-filter color-filter">
-                                                    {product.attribut_product.map((clr, i) => (
-                                                        <li key={i}>
-                                                            <a href="#">
-                                                                <span style={{padding: "1rem",}}>{clr.name}</span>
-                                                            </a>
-                                                        </li>
-                                                    ))}
-                                                </ul>
+                                                { attributProduct && (
+                                                    attributProduct.map(item => (
+                                                        <>
+                                                            <strong className="mr-10 text-capitalize">{item.attributName}</strong>
+                                                            <select className="attribut-dropdown" onChange={attributChangeHandler}>
+                                                                { item.attributes.map(attribut => (
+                                                                    <option value={attribut.amount}>{attribut.name}</option>
+                                                                ))}
+                                                            </select>
+                                                        </>
+                                                    ))
+                                                )}
                                             </div>
+
                                             {/*<div className="attr-detail attr-size">
                                                 <strong className="mr-10">Size</strong>
                                                 <ul className="list-filter size-filter font-small">

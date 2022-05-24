@@ -1,26 +1,25 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import ShowSelect from "../components/ecommerce/Filter/ShowSelect";
-import SortSelect from "../components/ecommerce/Filter/SortSelect";
-import Breadcrumb2 from "../components/layout/Breadcrumb2";
-import CategoryProduct from "./../components/ecommerce/Filter/CategoryProduct";
-import PriceRangeSlider from "./../components/ecommerce/Filter/PriceRangeSlider";
-import SizeFilter from "./../components/ecommerce/Filter/SizeFilter";
-import VendorFilter from "./../components/ecommerce/Filter/VendorFilter";
-import Pagination from "./../components/ecommerce/Pagination";
-import QuickView from "./../components/ecommerce/QuickView";
-import SingleProduct from "./../components/ecommerce/SingleProduct";
-import Layout from "./../components/layout/Layout";
-import { fetchProducts } from "../redux/action/product";
-import Loading from "../components/elements/Loading";
+import ShowSelect from "../../../components/ecommerce/Filter/ShowSelect";
+import SortSelect from "../../../components/ecommerce/Filter/SortSelect";
+import Breadcrumb2 from "../../../components/layout/Breadcrumb2";
+import CategoryProduct from "./../../../components/ecommerce/Filter/CategoryProduct";
+import PriceRangeSlider from "./../../../components/ecommerce/Filter/PriceRangeSlider";
+import SizeFilter from "./../../../components/ecommerce/Filter/SizeFilter";
+import VendorFilter from "./../../../components/ecommerce/Filter/VendorFilter";
+import Pagination from "./../../../components/ecommerce/Pagination";
+import QuickView from "./../../../components/ecommerce/QuickView";
+import SingleProduct from "./../../../components/ecommerce/SingleProduct";
+import Layout from "./../../../components/layout/Layout";
+import { fetchProducts } from "../../../redux/action/product";
+import Loading from "../../../components/elements/Loading";
 
-const Products = ({ filteredProducts, productFilters, fetchProducts }) => {
+const Category = ({ filteredProducts, productFilters, fetchProducts }) => {
     let Router = useRouter(),
-        searchTerm = Router.query.search,
+        searchTerm = Router.query.category,
         showLimit = 12,
         showPagination = 4;
-
 
     let [loaded, setLoaded] = useState(false);
     let [products, setProducts] = useState({items: []});
@@ -87,13 +86,10 @@ const Products = ({ filteredProducts, productFilters, fetchProducts }) => {
         setCurrentPage(1);
         setPages(Math.ceil(products.items.length / Number(e.target.value)));
     };
-
-
-
     return (
         <>
             <Layout noBreadcrumb="d-none">
-            <Breadcrumb2/>
+                <Breadcrumb2/>
                 <section className="mt-50 mb-50">
                     <div className="container mb-30">
                         <div className="row flex-row-reverse">
@@ -165,7 +161,7 @@ const Products = ({ filteredProducts, productFilters, fetchProducts }) => {
                                 </div>
 
                                 <div className="sidebar-widget price_range range mb-30">
-                                <h5 className="section-title style-1 mb-30">Fill by price</h5>
+                                    <h5 className="section-title style-1 mb-30">Fill by price</h5>
 
                                     <div className="price-filter">
                                         <div className="price-filter-inner">
@@ -327,4 +323,4 @@ const mapDidpatchToProps = {
     // fetchMoreProduct,
 };
 
-export default connect(mapStateToProps, mapDidpatchToProps)(Products);
+export default connect(mapStateToProps, mapDidpatchToProps)(Category);

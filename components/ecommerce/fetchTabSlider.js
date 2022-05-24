@@ -72,7 +72,7 @@ function FeatchTabSlider() {
                         <div className="banner-text">
                             <h2 className="mb-100">Bring nature into your home</h2>
 
-                            <Link href="/products">
+                            <Link href="/shop">
                                 <a className="btn btn-xs">
                                     Shop Now <i className="fi-rs-arrow-small-right"></i>
                                 </a>

@@ -98,7 +98,7 @@ const SingleProduct2 = ({
                 </div>
                 <div className="product-content-wrap">
                     <div className="product-category">
-                        <Link href="/products">
+                        <Link href="/shop">
                             <a>{product.brand}</a>
                         </Link>
                     </div>
