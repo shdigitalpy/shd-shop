@@ -37,6 +37,7 @@ const Layout = ({
                 <title>Bio Hundeshop</title>
                 <meta name="description" content="Bio Hunde Online Shop" />
                 <link rel="icon" href="/favicon.ico" />
+                <meta name="google-site-verification" content="Ze-8HMFe-AkcEnWikbW_x6mMfmLtwnyUbW7NkoBaaxc" />
             </Head>
 
             {isToggled && <div className="body-overlay-1" onClick={toggleClick}></div>}
