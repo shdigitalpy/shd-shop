@@ -720,7 +720,7 @@ h6,
 .display-2,
 .heading-sm-1 {
   font-family: "Open Sans", sans-serif;
-  color: var(--darkblue);
+  color: var(--background);
   font-weight: 700;
   line-height: 1.2;
 }
@@ -7892,7 +7892,7 @@ span.fi-rs-apps {
   display: inline-block;
   font-size: 1.2rem;
   font-weight: 500;
-  color: var(--darkblue);
+  color: var(--darkblue) !important;
   font-family: "Open Sans", sans-serif;
 }
 
