@@ -1,5 +1,5 @@
 import Link from "next/link";
-import React, { useEffect } from "react";
+import React, { useEffect, Fragment } from "react";
 import { useState } from "react";
 import { connect } from "react-redux";
 import { toast } from "react-toastify";
@@ -60,7 +60,7 @@ const ProductDetails = ({
     const attributChangeHandler = (e) => {
         const amount = e.target.value;
         if (!isNaN(amount)) {
-            setPrice(amount);
+            setPrice(parseInt(amount));
         }
     };
 
@@ -83,7 +83,6 @@ const ProductDetails = ({
 
             setPrice(updatedAttributProduct[0].attributes[0].amount)
             setAttributProduct(updatedAttributProduct);
-            console.log("Attribut product ", updatedAttributProduct);
         } else {
             setPrice(product.price);
         }
@@ -120,7 +119,7 @@ const ProductDetails = ({
                                             </div>
                                             <div className="clearfix product-price-cover">
                                                 <div className="product-price primary-color float-left">
-                                                    <span className="current-price  text-brand">CHF { price.toFixed(2) }</span>
+                                                    <span className="current-price  text-brand">CHF { price?.toFixed(2) }</span>
                                                     {(product.oldPrice == null || attributProduct) ?
                                                         <p></p> :
                                                         <span>{ product.discount && <span className="save-price font-md color3 ml-15">{product.discount.percentage}% {t("product-off")}</span> }
@@ -135,15 +134,15 @@ const ProductDetails = ({
                                             </div>
                                             <div className="attr-detail attr-color mb-15">
                                                 { attributProduct && (
-                                                    attributProduct.map(item => (
-                                                        <>
+                                                    attributProduct.map((item, index) => (
+                                                        <Fragment key={index}>
                                                             <strong className="mr-10 text-capitalize">{item.attributName}</strong>
                                                             <select className="attribut-dropdown" onChange={attributChangeHandler}>
-                                                                { item.attributes.map(attribut => (
-                                                                    <option value={attribut.amount}>{attribut.name}</option>
+                                                                { item.attributes.map((attribut, index) => (
+                                                                    <option key={index} value={attribut.amount}>{attribut.name}</option>
                                                                 ))}
                                                             </select>
-                                                        </>
+                                                        </Fragment>
                                                     ))
                                                 )}
                                             </div>

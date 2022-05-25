@@ -720,10 +720,12 @@ h6,
 .display-2,
 .heading-sm-1 {
   font-family: "Open Sans", sans-serif;
-  color: var(--background);
+  color: var(--darkblue);
   font-weight: 700;
   line-height: 1.2;
 }
+
+
 
 h1 {
   font-size: 48px;

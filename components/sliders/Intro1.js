@@ -30,13 +30,13 @@ const Intro1 = () => {
                         }}
                     >
                         <div className="slider-content">
-                            <h1 className="display-2 mb-40">
+                            <h1 className="display-2 text-white mb-40">
                                 {/*Don’t miss amazing
                                 <br />
                                 grocery deals*/}
                                 {t("main-banner-heading-1")}
                             </h1>
-                            <h2 className="mb-65">
+                            <h2 className="text-white mb-65">
                                 {t("newsletter")}
                             </h2>
                             

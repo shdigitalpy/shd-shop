@@ -133,8 +133,8 @@ const SingleProduct = ({
                     </div>
                     <h2>
                         <Link
-                            href={`/shop/${product.category1}/[slug]`}
-                            as={`/shop/${product.category1}/${product.slug}`}
+                            href={`/shop/${product.category1.toLowerCase()}/[slug]`}
+                            as={`/shop/${product.category1.toLowerCase()}/${product.slug}`}
                         >
                             <a>{product.title}</a>
                         </Link>

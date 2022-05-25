@@ -15,6 +15,7 @@ const Layout = ({
     sub,
     subChild,
     category,
+    catSlug,
     noBreadcrumb,
     headerStyle,
     authPage = false,
@@ -37,7 +38,6 @@ const Layout = ({
                 <title>Bio Hundeshop</title>
                 <meta name="description" content="Bio Hunde Online Shop" />
                 <link rel="icon" href="/favicon.ico" />
-                <meta name="google-site-verification" content="Ze-8HMFe-AkcEnWikbW_x6mMfmLtwnyUbW7NkoBaaxc" />
             </Head>
 
             {isToggled && <div className="body-overlay-1" onClick={toggleClick}></div>}
@@ -57,7 +57,7 @@ const Layout = ({
             <Header headerStyle={headerStyle} isToggled={isToggled} toggleClick={toggleClick} authPage={authPage} />
             <MobileMenu isToggled={isToggled} toggleClick={toggleClick} />
             <main className="main">
-                { !authPage && <Breadcrumb parent={parent} sub={sub} subChild={subChild} category={category} noBreadcrumb={noBreadcrumb} /> }
+                { !authPage && <Breadcrumb parent={parent} sub={sub} subChild={subChild} category={category} catSlug={catSlug} noBreadcrumb={noBreadcrumb} /> }
                 {children}
             </main>
             </motion.div>

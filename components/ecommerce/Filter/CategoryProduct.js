@@ -14,7 +14,7 @@ const CategoryProduct = ({ updateProductCategory }) => {
         e.preventDefault();
         // removeSearchTerm();
         updateProductCategory(category);
-        router.push(`/shop/${category}`);
+        router.push(`/shop/${category.toLowerCase()}`);
     };
 
     useEffect(() => {
@@ -25,7 +25,7 @@ const CategoryProduct = ({ updateProductCategory }) => {
     }, []);
 
     useEffect(() => {
-        const cat = query.cat ? query.cat : "";
+        const cat = query.category ? query.category : "";
 
         if (categories.length > 0) {
             setActive(cat);
@@ -40,8 +40,8 @@ const CategoryProduct = ({ updateProductCategory }) => {
                     <a>All</a>
                 </li>
                 { !!categories.length && categories.map(cat => (
-                    <li onClick={(e) => selectCategory(e, cat.name)} key={cat.name}
-                        className={active === cat.name ? "active" : ""}>
+                    <li onClick={(e) => selectCategory(e, cat.slug)} key={cat.slug}
+                        className={active === cat.slug ? "active" : ""}>
                         <a>
                             <img src="/assets/imgs/theme/icons/category-1.svg" alt="" />
                             { cat.name }

@@ -32,7 +32,7 @@ const CategoryProduct2 = ({ updateProductCategory }) => {
 
     useEffect(() => {
         const query = router.query;
-        const cat = query.cat ? query.cat : "";
+        const cat = query.category ? query.category : "";
 
         if (categories.length > 0 && cat) {
             setActive(cat);
@@ -46,7 +46,7 @@ const CategoryProduct2 = ({ updateProductCategory }) => {
                 { !!categories.length && categories.map((cat, index) => {
                     if ((index + 1) % 2 === 1) {
                         return (
-                            <li onClick={(e) => selectCategory(e, cat.name)} key={index}>
+                            <li onClick={(e) => selectCategory(e, cat.slug)} key={index}>
                                 <a>
                                    <img src="/assets/imgs/theme/icons/futter-icon.webp" alt="futter icon" />
                                     { cat.name }

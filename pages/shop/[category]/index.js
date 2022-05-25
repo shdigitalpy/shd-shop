@@ -44,7 +44,6 @@ const Category = ({ filteredProducts, productFilters, fetchProducts }) => {
 
     useEffect(() => {
         setProducts({ items: [] });
-
     }, []);
 
     const cratePagination = () => {

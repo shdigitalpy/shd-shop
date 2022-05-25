@@ -88,7 +88,7 @@ const CategorySlider = () => {
         router.push({
             pathname: "/shop",
             query: {
-                cat: category //
+                cat: category.toLowerCase() //
             }
         });
 
