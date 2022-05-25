@@ -181,24 +181,15 @@ const Footer = () => {
                                         </p>
                                     </div>
                                     <ul className="contact-infor">
-                                        <li>
-                                            <img
-                                                src="/assets/imgs/theme/icons/icon-location.svg"
-                                                alt=""
-                                            />
-                                            <strong>Address: </strong>{" "}
-                                            <span>
-                                                Teststrasse 1, 8400 Winterthur
-                                            </span>
-                                        </li>
+                                        
                                        
                                         <li>
                                             <img
                                                 src="/assets/imgs/theme/icons/icon-email-2.svg"
                                                 alt=""
                                             />
-                                            <strong>Email:</strong>
-                                            <span> shop@sh-digital.ch</span>
+                                            <strong>E-Mail:</strong>
+                                            <span>info@bio-hundeshop.ch</span>
                                         </li>
                                         {/*<li>
                                             <img
