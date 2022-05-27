@@ -24,7 +24,7 @@ const ThumbSlider = ({ product }) => {
             >
                 {product.product_gallery.map((item, i) => (
                     <SwiperSlide key={i}>
-                        <img src={item.image} alt={item.alt} />
+                        <img itemProp="image" src={item.image} alt={item.alt} />
                         
                         {/*<Zoom
                             img={item.image}

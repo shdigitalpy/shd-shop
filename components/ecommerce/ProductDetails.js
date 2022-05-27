@@ -100,6 +100,9 @@ const ProductDetails = ({
         <>
 
         
+      
+
+        
                 <Head>  
                     <title>{product.meta_title}</title>
                     <meta name="description" content={product.meta_description} />
@@ -123,18 +126,30 @@ const ProductDetails = ({
                                     <div className="col-md-6 col-sm-12 col-xs-12">
                                         <div className="detail-info  pr-30 pl-30">
                                             <span className="stock-status out-stock"> {t("product-saleoff")} </span>
-                                            <h2 className="title-detail">{product.title}</h2>
+                                            
+                                            {/* SEO */}
+
+                                             
+
+                                            <div itemScope itemType="https://schema.org/Product">{/* SEO */}
+                                            <h2 className="title-detail"><span itemProp="name">{product.title}</span></h2>
                                             <div className="product-detail-rating">
                                                 <div className="product-rate-cover text-end">
                                                     <div className="product-rate d-inline-block">
-                                                        <div className="product-rating" style={{ width: `${(product.total_stars / 5) * 100}%` }}></div>
+
+                                                    
+        
+
+
+                                                        <div itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating"
+                                                        className="product-rating" itemprop="ratingValue" style={{ width: `${(product.total_stars / 5) * 100}%` }}></div>
                                                     </div>
-                                                    <span className="font-small ml-5 text-muted"> ({product.count_review} {t("product-review")})</span>
+                                                    <span className="font-small ml-5 text-muted" itemprop="reviewCount"> ({product.count_review} {t("product-review")})</span>
                                                 </div>
                                             </div>
-                                            <div className="clearfix product-price-cover">
+                                            <div itemProp="offers" itemScope itemType="https://schema.org/Offer" className="clearfix product-price-cover">
                                                 <div className="product-price primary-color float-left">
-                                                    <span className="current-price  text-brand">CHF { price?.toFixed(2) }</span>
+                                                    <span className="current-price  text-brand"><span itemProp="priceCurrency" content="USD">CHF</span> <span itemProp="price" content={ price?.toFixed(2) }>{ price?.toFixed(2) }</span></span>
                                                     {(product.oldPrice == null || attributProduct) ?
                                                         <p></p> :
                                                         <span>{ product.discount && <span className="save-price font-md color3 ml-15">{product.discount.percentage}% {t("product-off")}</span> }
@@ -145,7 +160,7 @@ const ProductDetails = ({
                                             </div>
 
                                             <div className="short-desc mb-30">
-                                                <p className="font-lg">{product.desc}</p>
+                                            <p itemProp="description" className="font-lg">{product.desc}</p>
                                             </div>
                                             <div className="attr-detail attr-color mb-15">
                                                 { attributProduct && (
@@ -219,20 +234,14 @@ const ProductDetails = ({
                                             </div>
                                             <ul className="product-meta font-xs color-grey mt-50">
                                                 <li className="mb-5">
-                                                    SKU:
-                                                    <a href="#">{product.id}</a>
+                                                    Artikel-Nr.:
+                                                    <a href="#"> {product.id}</a>
                                                 </li>
-                                                <li className="mb-5">
-                                                    Tags:
-                                                    { product.tags.map((tag, i) => (
-                                                        <a href="#" rel="tag" className="me-1" key={i}>
-                                                            { tag },
-                                                        </a>
-                                                    ))}
-                                                </li>
+                                                
                                                 <li>
-                                                    Shipping time:
-                                                    <span className="in-stock text-success ml-5">{product.shipping_time}</span>
+                                                <link itemProp="availability" href="https://schema.org/InStock" />
+                                                    Lieferzeit:
+                                                    <span className="in-stock text-success ml-5"> {product.shipping_time}</span>
                                                 </li>
                                             </ul>
                                         </div>
@@ -255,6 +264,8 @@ const ProductDetails = ({
                                     </>
                                 )}
                             </div>
+                            </div>
+          
                         </div>
                     </div>
                 </div>
