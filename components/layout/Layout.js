@@ -37,7 +37,15 @@ const Layout = ({
             <Head>
                 <title>Bio Hundeshop</title>
                 <meta name="description" content="Bio Hunde Online Shop" />
-                <link rel="icon" href="/favicon.ico" />
+                 
+                <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png" />
+                
+                <link rel="shortcut icon" type="image/x-icon" href="/favicon-32x32.ico" />
+                <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
+          
+                <meta name="msapplication-square310x310logo" content="/mstile-310x310.png" />
+                <meta name="msapplication-TileColor" content="#000000" />
+    
             </Head>
 
             {isToggled && <div className="body-overlay-1" onClick={toggleClick}></div>}

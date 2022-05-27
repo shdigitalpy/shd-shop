@@ -14,6 +14,8 @@ import SingleProduct from "./../../../components/ecommerce/SingleProduct";
 import Layout from "./../../../components/layout/Layout";
 import { fetchProducts } from "../../../redux/action/product";
 import Loading from "../../../components/elements/Loading";
+import Head from "next/head";
+import { getCategories } from "../../../rest/calls";
 
 const Category = ({ filteredProducts, productFilters, fetchProducts }) => {
     let Router = useRouter(),
@@ -85,10 +87,33 @@ const Category = ({ filteredProducts, productFilters, fetchProducts }) => {
         setCurrentPage(1);
         setPages(Math.ceil(products.items.length / Number(e.target.value)));
     };
+
+    const [category, setCategory] = useState([]);
+    useEffect(() => {
+        getCategories()
+            .then(res => {
+                setCategory(res);
+            });
+    }, []);
+
+    console.log('categories', category)
     return (
         <>
             <Layout noBreadcrumb="d-none">
+            {category.filter(x => x.slug == Router.query.category).map(x =>
+                <Head>  
+                    
+                    <title>
+
+                        {x.meta_title}
+
+                        </title>
+                    <meta name="description" content={x.meta_description} />
+                   
+                    </Head>)}
+
                 <Breadcrumb2/>
+
                 <section className="mt-50 mb-50">
                     <div className="container mb-30">
                         <div className="row flex-row-reverse">
@@ -154,13 +179,13 @@ const Category = ({ filteredProducts, productFilters, fetchProducts }) => {
                             <div className="col-lg-1-5 primary-sidebar sticky-sidebar">
                                 <div className="sidebar-widget widget-category-2 mb-30">
                                     <h5 className="section-title style-1 mb-30">
-                                        Category
+                                        Kategorien
                                     </h5>
                                     <CategoryProduct />
                                 </div>
 
                                 <div className="sidebar-widget price_range range mb-30">
-                                    <h5 className="section-title style-1 mb-30">Fill by price</h5>
+                                    <h5 className="section-title style-1 mb-30">Sortieren nach Preis</h5>
 
                                     <div className="price-filter">
                                         <div className="price-filter-inner">
@@ -323,3 +348,4 @@ const mapDidpatchToProps = {
 };
 
 export default connect(mapStateToProps, mapDidpatchToProps)(Category);
+

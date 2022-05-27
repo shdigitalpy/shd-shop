@@ -40,7 +40,9 @@ const ProductId = (
         <>
             { product && (
                 <Layout parent="Home" sub="Shop" category={activeCat?.name} catSlug={activeCat?.slug} subChild={product.title}>
-                    <div className="container">
+                    
+
+            <div className="container">
                         <ProductDetails product={product} users={users} />
                     </div>
                 </Layout>

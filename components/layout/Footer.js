@@ -172,6 +172,7 @@ const Footer = () => {
                                     <div className="logo  mb-30">
                                         <Link href="/"><a className="mb-15">
                                             <img
+                                            style={{ width: "150px"}}
                                                 src="/assets/imgs/logo.webp"
                                                 alt="logo"
                                             />
@@ -189,7 +190,7 @@ const Footer = () => {
                                                 src="/assets/imgs/theme/icons/icon-email-2.svg"
                                                 alt=""
                                             />
-                                            <strong>E-Mail:</strong>
+                                            <strong>E-Mail: </strong>
                                             <span>info@bio-hundeshop.ch</span>
                                         </li>
                                         {/*<li>
