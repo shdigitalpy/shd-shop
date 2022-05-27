@@ -142,9 +142,10 @@ const ProductDetails = ({
 
 
                                                         <div itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating"
-                                                        className="product-rating" itemprop="ratingValue" style={{ width: `${(product.total_stars / 5) * 100}%` }}></div>
+                                                        className="product-rating" style={{ width: `${(product.total_stars / 5) * 100}%` }}></div>
+                                                        <span style={{ display: "none"}} itemprop="ratingValue">{product.total_stars}</span>
                                                     </div>
-                                                    <span className="font-small ml-5 text-muted" itemprop="reviewCount"> ({product.count_review} {t("product-review")})</span>
+                                                    <span className="font-small ml-5 text-muted"> (<span itemprop="reviewCount" >{product.count_review}</span> {t("product-review")})</span>
                                                 </div>
                                             </div>
                                             <div itemProp="offers" itemScope itemType="https://schema.org/Offer" className="clearfix product-price-cover">
@@ -239,9 +240,9 @@ const ProductDetails = ({
                                                 </li>
                                                 
                                                 <li>
-                                                <link itemProp="availability" href="https://schema.org/InStock" />
+                                                
                                                     Lieferzeit:
-                                                    <span className="in-stock text-success ml-5"> {product.shipping_time}</span>
+                                                    <span className="in-stock text-success ml-5"><link itemProp="availability" href="https://schema.org/InStock" />{product.shipping_time}</span>
                                                 </li>
                                             </ul>
                                         </div>
