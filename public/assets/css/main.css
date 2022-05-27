@@ -10803,6 +10803,7 @@ footer .hotline img {
   .mobile-header-content-area .category-list li > a {
     display: flex;
     align-items: center;
+    font-size:1.1rem;
   }
   .mobile-header-content-area .category-list img {
     max-width: 40px;

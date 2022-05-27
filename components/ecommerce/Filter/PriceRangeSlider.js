@@ -10,7 +10,7 @@ const PriceRangeSlider = ({ updateProductFilters }) => {
     const Router = useRouter();
     const searchTerm = Router.query.search;
 
-    const [price, setPrice] = useState({ value: { min: 0, max: 200 } });
+    const [price, setPrice] = useState({ value: { min: 0, max: 150 } });
 
     useEffect(() => {
         const filters = {
@@ -24,7 +24,7 @@ const PriceRangeSlider = ({ updateProductFilters }) => {
         <>
             <InputRange
                 formatLabel={(value) => `CHF ${value}`}
-                maxValue={200}
+                maxValue={150}
                 minValue={0}
                 value={price.value}
                 onChange={(value) => setPrice({ value })}

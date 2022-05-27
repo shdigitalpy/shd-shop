@@ -68,7 +68,7 @@ const MobileMenu = ({
                         <div className="mobile-header-logo">
                             <Link href="/">
                                 <a>
-                                    <img
+                                    <img style={{width:"100px"}}
                                         src="/assets/imgs/logo.webp"
                                         alt="logo"
                                     />
@@ -102,12 +102,12 @@ const MobileMenu = ({
                                 <>
                                     <div className="single-mobile-header-info">
                                         <Link href="/page-login">
-                                            <a>Log In</a>
+                                            <a>Anmelden</a>
                                         </Link>
                                     </div>
                                     <div className="single-mobile-header-info">
                                         <Link href="/page-register">
-                                            <a>Sign up</a>
+                                            <a>Registrieren</a>
                                         </Link>
                                     </div>
                                 </>
@@ -116,20 +116,20 @@ const MobileMenu = ({
                                 <>
                                     <div className="single-mobile-header-info">
                                         <Link href="/page-account">
-                                            <a>My account</a>
+                                            <a>Mein Konto</a>
                                         </Link>
                                     </div>
                                     <div className="single-mobile-header-info">
                                         <Link href="/page-login">
-                                            <a onClick={signOutHandler}>Logout</a>
+                                            <a onClick={signOutHandler}>Abmelden</a>
                                         </Link>
                                     </div>
                                 </>
                             )}
                             <div className="single-mobile-header-info">
-                                <Link href="#">
-                                    <a>(+01) - 2345 - 6789 </a>
-                                </Link>
+                                <Link href="/shop-cart">
+                                            <a>Warenkorb</a>
+                                        </Link>
                             </div>
                         </div>
                         <div className="mobile-social-icon">

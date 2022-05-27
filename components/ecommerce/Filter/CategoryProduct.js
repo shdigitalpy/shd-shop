@@ -36,14 +36,12 @@ const CategoryProduct = ({ updateProductCategory }) => {
     return (
         <>
             <ul>
-                <li onClick={(e) => selectCategory(e, "")}>
-                    <a>All</a>
-                </li>
+                
                 { !!categories.length && categories.map(cat => (
                     <li onClick={(e) => selectCategory(e, cat.slug)} key={cat.slug}
                         className={active === cat.slug ? "active" : ""}>
                         <a>
-                            <img src="/assets/imgs/theme/icons/category-1.svg" alt="" />
+                            
                             { cat.name }
                         </a>
                         {/*<span className="count">30</span>*/}
