@@ -238,7 +238,7 @@ const Footer = () => {
                                         <a href="#">FAQ</a>
                                     </li>
                                     <li>
-                                        <a href="#">Lieferung</a>
+                                        <a href="/lieferung">Lieferung</a>
                                     </li>
             
                                     <li>
@@ -257,10 +257,10 @@ const Footer = () => {
                                     </li>*/}
                                     
                                     <li>
-                                        <a href="#">Datenschutz</a>
+                                        <a href="/datenschutz">Datenschutz</a>
                                     </li>
                                     <li>
-                                        <a href="#">AGB</a>
+                                        <a href="/agb">AGB</a>
                                     </li>
                                     <li>
                                         <a href="/page-contact">Kontakt</a>
