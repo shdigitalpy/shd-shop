@@ -14,6 +14,7 @@ import SingleProduct from "./../components/ecommerce/SingleProduct";
 import Layout from "./../components/layout/Layout";
 import { fetchProducts } from "../redux/action/product";
 import Loading from "../components/elements/Loading";
+import Head from "next/head";
 
 const Shop = ({ filteredProducts, productFilters, fetchProducts }) => {
     let Router = useRouter(),
@@ -90,6 +91,16 @@ const Shop = ({ filteredProducts, productFilters, fetchProducts }) => {
     return (
         <>
             <Layout noBreadcrumb="d-none">
+            <Head>  
+                    
+                    <title>
+
+                        Shop | Bio Hundeshop
+
+                        </title>
+                    <meta name="description" content="Shop | Bio Hundeshop" />
+                   
+                    </Head>
                 <Breadcrumb2/>
                 <section className="mt-50 mb-50">
                     <div className="container mb-30">

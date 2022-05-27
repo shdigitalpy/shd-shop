@@ -96,7 +96,6 @@ const Category = ({ filteredProducts, productFilters, fetchProducts }) => {
             });
     }, []);
 
-    console.log('categories', category)
     return (
         <>
             <Layout noBreadcrumb="d-none">

@@ -16,6 +16,7 @@ const CategoryProductMainMenu = ({ updateProductCategory }) => {
         // removeSearchTerm();
         updateProductCategory(category);
         router.push(`/shop/${category.toLowerCase()}`);
+        
     };
 
     useEffect(() => {
@@ -34,7 +35,6 @@ const CategoryProductMainMenu = ({ updateProductCategory }) => {
         }
     }, [categories, query]);
 
-    console.log('categories', categories)
 
     return (
         <>

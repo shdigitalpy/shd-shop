@@ -21,6 +21,7 @@ const CategoryProduct2 = ({ updateProductCategory }) => {
         // removeSearchTerm();
         updateProductCategory(category);
         router.push(`/shop/${category}`);
+        
     };
 
     useEffect(() => {
@@ -39,6 +40,7 @@ const CategoryProduct2 = ({ updateProductCategory }) => {
             updateProductCategory(cat);
         }
     }, [categories]);
+
 
     return (
         <>

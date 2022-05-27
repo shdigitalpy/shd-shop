@@ -1,11 +1,23 @@
 import BlogGrid from "../components/elements/BlogGrid";
 import Layout from "../components/layout/Layout";
 import BlogFilter from './../components/elements/BlogFilter';
+import Head from "next/head";
 
 function PageBlogGrid() {
     return (
         <>
             <Layout parent="Home" sub="Blog" subChild="Wide">
+            <Head>  
+                    
+                    <title>
+
+                        Blog | Bio Hundeshop
+
+                        </title>
+                    <meta name="description" content="Blog | Bio Hundeshop" />
+                   
+                    </Head>
+
                 <section className="mt-50 mb-50">
                     <div className="container custom">
                         <div className="row">

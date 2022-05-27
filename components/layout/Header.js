@@ -42,7 +42,11 @@ const Header = ({
         setAuth(true);
     }, []);
 
-    const handleToggle = () => setToggled(!isToggled);
+    const handleToggle = () => {
+
+        setToggled(!isToggled);
+
+    }
 
     const changeLanguageHandler = (ln) => {
         i18n.changeLanguage(ln)
@@ -68,6 +72,9 @@ const Header = ({
             changeLanguageHandler(language);
         }
     });
+
+
+
 
     return (
         <>  
