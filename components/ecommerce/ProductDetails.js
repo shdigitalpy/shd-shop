@@ -14,6 +14,9 @@ import ProductTab from "../elements/ProductTab";
 import RelatedSlider from "../sliders/Related";
 import ThumbSlider from "../sliders/Thumb";
 import { useTranslation } from 'react-i18next';
+import { fetchProducts } from "../../redux/action/product";
+import Head from "next/head";
+
 
 const ProductDetails = ({
     product,
@@ -90,8 +93,20 @@ const ProductDetails = ({
 
     const inCart = cartItems.find((cartItem) => cartItem.id === product.id);
 
+  
+
     return (
+
         <>
+
+        
+                <Head>  
+                    <title>{product.meta_title}</title>
+                    <meta name="description" content={product.meta_description} />
+                   
+                    </Head>
+
+                    
             <section className="mt-50 mb-50">
                 <div className="container">
                     <div className="row flex-row-reverse">

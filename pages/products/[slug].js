@@ -4,6 +4,7 @@ import Layout from '../../components/layout/Layout';
 import { connect } from "react-redux";
 import { getUsers } from '../../rest/calls';
 import { fetchProducts } from "../../redux/action/product";
+import Head from "next/head";
 
 const ProductId = (
     {
@@ -22,10 +23,13 @@ const ProductId = (
         fetchUsers();
     }, []);
 
+
+    
     return (
         <>
             { product && (
                 <Layout parent="Home" sub="Shop" subChild={product.title}>
+                
                     <div className="container">
                         <ProductDetails product={product} users={users} />
                     </div>
