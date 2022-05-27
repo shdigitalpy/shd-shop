@@ -34,6 +34,8 @@ const CategoryProductMainMenu = ({ updateProductCategory }) => {
         }
     }, [categories, query]);
 
+    console.log('categories', categories)
+
     return (
         <>
 
@@ -43,8 +45,12 @@ const CategoryProductMainMenu = ({ updateProductCategory }) => {
 
             <ul>
 
-                { !!categories.length && categories.map(cat => (
-                    <li onClick={(e) => selectCategory(e, cat.slug)} key={cat.slug}
+                { !!categories.length && 
+
+                    categories
+                    .sort( (a,b) => a.sort > b.sort ? 1 : -1)
+                    .map(cat => (
+                    <li onClick={(e) => selectCategory(e, cat.slug)} key={cat.sort}
                         className={active === cat.slug ? "active" : ""}>
                         <a>
                             { cat.name }
