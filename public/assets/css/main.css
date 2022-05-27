@@ -5567,6 +5567,11 @@ table.no-border thead {
   font-weight: 600;
 }
 
+.payment_logos {
+  width:3rem;
+  margin: 0rem 5px;
+}
+
 .custome-radio .form-check-label::before {
   content: "";
   border: 1px solid #908f8f;

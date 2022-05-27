@@ -9,11 +9,10 @@ const BlogSingle = () => {
                     <div className="row">
                         <div className="col-xl-10 col-lg-12 m-auto">
                             <h6 className="mb-10">
-                                <Link href="#"><a>Recipes</a></Link>
+                                <Link href="#"><a>Blog</a></Link>
                             </h6>
                             <h2 className="mb-10">
-                                Best smartwatch 2021: the top wearables you can
-                                buy today
+                                Wie viel Hundefutter ist gut
                             </h2>
                             <div className="single-header-meta">
                                 <div className="entry-meta meta-1 font-xs mt-15 mb-15">
@@ -25,13 +24,13 @@ const BlogSingle = () => {
                                         />
                                     </a></Link>
                                     <span className="post-by">
-                                        By <Link href="#"><a>Sugar Rosie</a></Link>
+                                        By <Link href="#"><a>Steffi</a></Link>
                                     </span>
                                     <span className="post-on has-dot">
-                                        2 hours ago
+                                        27.05.2022
                                     </span>
                                     <span className="time-reading has-dot">
-                                        8 mins read
+                                        4min Lesezeit
                                     </span>
                                 </div>
                                 <div className="social-icons single-share">
@@ -59,7 +58,7 @@ const BlogSingle = () => {
                     </div>
                 </div>
                 <figure className="single-thumbnail">
-                    <img src="/assets/imgs/blog/blog-19.png" alt="" />
+                    <img src="/assets/imgs/blog/hunde-blog-1.png" alt="" />
                 </figure>
                 <div className="single-content">
                     <div className="row">

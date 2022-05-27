@@ -74,12 +74,12 @@ const Header = ({
 
         
             <header className="header-area header-style-1 header-height-2">
-                <div className="mobile-promotion">
+                {/*<div className="mobile-promotion">
                     <span>
                         Grand opening, <strong>up to 15%</strong> off all items.
                         Only <strong>3 days</strong> left
                     </span>
-                </div>
+                </div>*/}
                 <div className="header-top header-top-ptb-1 d-lg-block">
                     <div className="container">
                         <div className="row align-items-center">
@@ -517,7 +517,7 @@ const Header = ({
                                 />
 
                                 <p>
-                                    052 730 55 55<span>Telefon Support</span>
+                                    052 745 24 09<span>Telefon Support</span>
                                 </p>
                             </div>
 

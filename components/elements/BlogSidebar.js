@@ -15,7 +15,7 @@ const BlogSidebar = () => {
                     </div>
                 </div>
                 <div className="sidebar-widget widget-category-2 mb-50">
-                    <h5 className="section-title style-1 mb-30">Category</h5>
+                    <h5 className="section-title style-1 mb-30">Kategorien</h5>
                     <ul>
                         <li>
                             <Link href="/shop"><a> <img src="/assets/imgs/theme/icons/category-1.svg" alt="" />Milks & Dairies</a></Link><span className="count">30</span>

@@ -6,139 +6,14 @@ const BlogGrid = ({ show, wide }) => {
     var data = [
         {
             id: 1,
-            title: "The litigants on the screen are not actors",
-            category: "Politic",
+            title: "Wieviel Hundefutter gut ist",
+            category: "Hundefutter",
             views: 126,
-            date: "25 April 2021",
-            img: "blog-1.png",
+            date: "27. Mai 2022",
+            img: "hunde-blog-1.png",
             desc: "These people envy me for having a lifestyle they don’t have, but the truth is, sometimes I envy their lifestyle instead. Struggling to sell one multi.",
         },
-        {
-            id: 2,
-            title: "Essential Qualities of Highly Successful Music",
-            img: "blog-2.png",
-            category: "Global",
-            views: 126,
-            date: "25 April 2021",
-            desc: "These people envy me for having a lifestyle they don’t have, but the truth is, sometimes I envy their lifestyle instead. Struggling to sell one multi.",
-        },
-        {
-            id: 2,
-            title: "Essential Qualities of Highly Successful Music",
-            img: "blog-3.png",
-            category: "Global",
-            views: 126,
-            date: "25 April 2021",
-            desc: "These people envy me for having a lifestyle they don’t have, but the truth is, sometimes I envy their lifestyle instead. Struggling to sell one multi.",
-        },
-        {
-            id: 2,
-            title: "Essential Qualities of Highly Successful Music",
-            img: "blog-4.png",
-            category: "Global",
-            views: 126,
-            date: "25 April 2021",
-            desc: "These people envy me for having a lifestyle they don’t have, but the truth is, sometimes I envy their lifestyle instead. Struggling to sell one multi.",
-        },
-        {
-            id: 2,
-            title: "Essential Qualities of Highly Successful Music",
-            img: "blog-5.png",
-            category: "Global",
-            views: 126,
-            date: "25 April 2021",
-            desc: "These people envy me for having a lifestyle they don’t have, but the truth is, sometimes I envy their lifestyle instead. Struggling to sell one multi.",
-        },
-        {
-            id: 2,
-            title: "Essential Qualities of Highly Successful Music",
-            img: "blog-6.png",
-            category: "Global",
-            views: 126,
-            date: "25 April 2021",
-            desc: "These people envy me for having a lifestyle they don’t have, but the truth is, sometimes I envy their lifestyle instead. Struggling to sell one multi.",
-        },
-        {
-            id: 2,
-            title: "Essential Qualities of Highly Successful Music",
-            img: "blog-7.png",
-            category: "Global",
-            views: 126,
-            date: "25 April 2021",
-            desc: "These people envy me for having a lifestyle they don’t have, but the truth is, sometimes I envy their lifestyle instead. Struggling to sell one multi.",
-        },
-        {
-            id: 2,
-            title: "Essential Qualities of Highly Successful Music",
-            img: "blog-8.png",
-            category: "Global",
-            views: 126,
-            date: "25 April 2021",
-            desc: "These people envy me for having a lifestyle they don’t have, but the truth is, sometimes I envy their lifestyle instead. Struggling to sell one multi.",
-        },
-        {
-            id: 2,
-            title: "Essential Qualities of Highly Successful Music",
-            img: "blog-9.png",
-            category: "Global",
-            views: 126,
-            date: "25 April 2021",
-            desc: "These people envy me for having a lifestyle they don’t have, but the truth is, sometimes I envy their lifestyle instead. Struggling to sell one multi.",
-        },
-        {
-            id: 2,
-            title: "Essential Qualities of Highly Successful Music",
-            img: "blog-10.png",
-            category: "Global",
-            views: 126,
-            date: "25 April 2021",
-            desc: "These people envy me for having a lifestyle they don’t have, but the truth is, sometimes I envy their lifestyle instead. Struggling to sell one multi.",
-        },
-        {
-            id: 2,
-            title: "Essential Qualities of Highly Successful Music",
-            img: "blog-11.png",
-            category: "Global",
-            views: 126,
-            date: "25 April 2021",
-            desc: "These people envy me for having a lifestyle they don’t have, but the truth is, sometimes I envy their lifestyle instead. Struggling to sell one multi.",
-        },
-        {
-            id: 2,
-            title: "Essential Qualities of Highly Successful Music",
-            img: "blog-12.png",
-            category: "Global",
-            views: 126,
-            date: "25 April 2021",
-            desc: "These people envy me for having a lifestyle they don’t have, but the truth is, sometimes I envy their lifestyle instead. Struggling to sell one multi.",
-        },
-        {
-            id: 2,
-            title: "Essential Qualities of Highly Successful Music",
-            img: "blog-13.png",
-            category: "Global",
-            views: 126,
-            date: "25 April 2021",
-            desc: "These people envy me for having a lifestyle they don’t have, but the truth is, sometimes I envy their lifestyle instead. Struggling to sell one multi.",
-        },
-        {
-            id: 2,
-            title: "Essential Qualities of Highly Successful Music",
-            img: "blog-14.png",
-            category: "Global",
-            views: 126,
-            date: "25 April 2021",
-            desc: "These people envy me for having a lifestyle they don’t have, but the truth is, sometimes I envy their lifestyle instead. Struggling to sell one multi.",
-        },
-        {
-            id: 2,
-            title: "Essential Qualities of Highly Successful Music",
-            img: "blog-15.png",
-            category: "Global",
-            views: 126,
-            date: "25 April 2021",
-            desc: "These people envy me for having a lifestyle they don’t have, but the truth is, sometimes I envy their lifestyle instead. Struggling to sell one multi.",
-        },
+       
     ];
 
     return (
@@ -152,7 +27,7 @@ const BlogGrid = ({ show, wide }) => {
                     }
                 >
                     <div className="post-thumb">
-                        <Link href="/blog-post-right">
+                        <Link href="/hunde-blog-detail">
                             <a>
                                 <img
                                     className="border-radius-15"
@@ -186,10 +61,10 @@ const BlogGrid = ({ show, wide }) => {
                             <div>
                                 <span className="post-on mr-10">{item.date}</span>
                                 <span className="hit-count has-dot mr-10">
-                                    {item.views}k Views
+                                    {item.views} gesehen
                                 </span>
                                 <span className="hit-count has-dot">
-                                    4 mins read
+                                    4min Lesezeit
                                 </span>
                             </div>
                         </div>

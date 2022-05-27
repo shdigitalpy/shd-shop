@@ -67,7 +67,7 @@ const CategoryProductMainMenu = ({ updateProductCategory }) => {
 
 
                                             <li>
-                                                <Link href="/blog-category-list">
+                                                <Link href="/hunde-blog">
                                                     <a>
                                                         Blog
 

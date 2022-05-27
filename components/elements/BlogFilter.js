@@ -5,21 +5,17 @@ const BlogFilter = () => {
         <>
             <div className="totall-product">
                                         <h2>
-                                            <img
-                                                className="w-36px mr-10"
-                                                src="/assets/imgs/theme/icons/category-1.svg"
-                                                alt=""
-                                            />
-                                            Recips Articles
+                                            
+                                            Aktuelle Beiträge
                                         </h2>
                                     </div>
                                     <div className="sort-by-product-area">
-                                        <div className="sort-by-cover mr-10">
+                                        {/*<div className="sort-by-cover mr-10">
                                             <div className="sort-by-product-wrap">
                                                 <div className="sort-by">
                                                     <span>
                                                         <i className="fi-rs-apps"></i>
-                                                        Show:
+                                                        Zeige:
                                                     </span>
                                                 </div>
                                                 <select>
@@ -29,13 +25,13 @@ const BlogFilter = () => {
                                                     <option>200</option>
                                                 </select>
                                             </div>
-                                        </div>
-                                        <div className="sort-by-cover">
+                                        </div>*/}
+                                        {/*<div className="sort-by-cover">
                                             <div className="sort-by-product-wrap">
                                                 <div className="sort-by">
                                                     <span>
                                                         <i className="fi-rs-apps-sort"></i>
-                                                        Sort:
+                                                        Sortierung:
                                                     </span>
                                                 </div>
                                                 <select>
@@ -47,16 +43,14 @@ const BlogFilter = () => {
                                                             Featured
                                                         </a>
                                                     </li>
-                                                    <option>Newest</option>
+                                                    <option>Neuste</option>
                                                     <option>
-                                                        Most comments
+                                                        Am meisten Kommentare
                                                     </option>
-                                                    <option>
-                                                        Release Date
-                                                    </option>
+                                                    
                                                 </select>
                                             </div>
-                                        </div>
+                                        </div>*/}
                                     </div>
         </>
     );

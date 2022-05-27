@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link"
+import CategoryProductFooter from "../ecommerce/Filter/CategoryProductFooter";
 
 const Footer = () => {
     return (
@@ -221,7 +222,7 @@ const Footer = () => {
                                         <a href="/shop-wishlist">Merkliste</a>
                                     </li>
                                     <li>
-                                        <a href="#">Lieferung verfolgen</a>
+                                        <a href="/page-account">Lieferung verfolgen</a>
                                     </li>
                                     
                                     
@@ -241,7 +242,7 @@ const Footer = () => {
                                     </li>
             
                                     <li>
-                                        <a href="#">Aktionen</a>
+                                        <a href="/shop">Aktionen</a>
                                     </li>
                                 </ul>
                             </div>
@@ -251,9 +252,9 @@ const Footer = () => {
                             >
                                 <h4 className="widget-title">Unternehmen</h4>
                                 <ul className="footer-list  mb-sm-5 mb-md-0">
-                                    <li>
+                                    {/*<li>
                                         <a href="/page-about">Über uns</a>
-                                    </li>
+                                    </li>*/}
                                     
                                     <li>
                                         <a href="#">Datenschutz</a>
@@ -273,22 +274,7 @@ const Footer = () => {
                                 data-wow-delay=".4s"
                             >
                                 <h4 className="widget-title ">Beliebt</h4>
-                                <ul className="footer-list  mb-sm-5 mb-md-0">
-                                    <li>
-                                        <a href="#">Hundefutter</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Hundezubehör</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Trainingszubehör</a>
-                                    </li>
-
-                                    <li>
-                                        <a href="#">Hundeleinen</a>
-                                    </li>
-                                    
-                                </ul>
+                                <CategoryProductFooter/>
                             </div>
                             
                         </div>
@@ -317,10 +303,47 @@ const Footer = () => {
                               
                                 
                                 <img
-                                    className=""
-                                    src="/assets/imgs/theme/payment-method.png"
+                                    className="payment_logos"
+                                    src="/assets/card-icons/card_visa.svg"
                                     alt=""
                                 />
+                                <img
+                                    className="payment_logos"
+                                    src="/assets/card-icons/card_mastercard.svg"
+                                    alt=""
+                                />
+                                <img
+                                    className="payment_logos"
+                                    src="/assets/card-icons/card_paypal.svg"
+                                    alt=""
+                                />
+                                <img
+                                    className="payment_logos"
+                                    src="/assets/card-icons/card_twint.svg"
+                                    alt=""
+                                />
+                                <img
+                                    className="payment_logos"
+                                    src="/assets/card-icons/card_postfinance_efinance.svg"
+                                    alt=""
+                                />
+                                <img
+                                    className="payment_logos"
+                                    src="/assets/card-icons/card_postfinance_card.svg"
+                                    alt=""
+                                />
+                                <img
+                                    className="payment_logos"
+                                    src="/assets/card-icons/card_google_pay.svg"
+                                    alt=""
+                                />
+
+                                <img
+                                    className="payment_logos"
+                                    src="/assets/card-icons/card_apple_pay.svg"
+                                    alt=""
+                                />
+
                             </div>
                         </div>
                         <div className="col-xl-4 col-lg-6 col-md-6 text-end d-none d-md-block">
