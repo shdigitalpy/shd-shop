@@ -6520,6 +6520,7 @@ h6.post-title {
   min-width: 180px;
 }
 
+
 .search-style-1 form {
   width: 370px;
   position: relative;
@@ -7392,7 +7393,7 @@ h6.post-title {
   justify-content: space-between;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  padding: 20px 30px;
+  padding: 10px 30px;
   background-color: #ffffff;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -10737,7 +10738,7 @@ footer .hotline img {
             transform: translateX(-50%);*/
   }
   .logo.logo-width-1 a img {
-    width: 250px;
+    width: 150px;
     min-width: 150px;
   }
   .login_wrap {
@@ -10747,7 +10748,7 @@ footer .hotline img {
     text-align: left;
   }
   .header-bottom {
-    padding: 20px 0;
+
   }
   .header-action .header-action-icon {
     margin-right: 15px;
