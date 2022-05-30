@@ -358,6 +358,9 @@ const Cart = ({
                                                     </td>
                                                 </tr>
                                             ))}
+
+                                          
+
                                             <tr>
                                                 <td
                                                     colSpan="6"
@@ -374,11 +377,24 @@ const Cart = ({
                                                     )}
                                                 </td>
                                             </tr>
+
+
                                         </tbody>
                                     </table>
                                 </div>
+
+                                <div>
+                                    
+
+                                </div>
+
                                 <div className="cart-action text-end">
                                     
+
+                                <h4 className="text-brand">Total: CHF {price()}</h4>
+                                <br />                                      
+                                                
+                                             
 
                                     
 
