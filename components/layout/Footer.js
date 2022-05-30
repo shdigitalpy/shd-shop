@@ -292,7 +292,7 @@ const Footer = () => {
                         <div className="col-xl-4 col-lg-6 col-md-6">
                             <p className="font-sm mb-0">
                                 &copy; {(new Date().getFullYear())},{" "}
-                                <strong className="text-brand">SH Digital</strong> <br />
+                                <strong className="text-brand">Bio Hundeshop</strong> <br />
                                 Alle Rechte vorbehalten
                             </p>
                         </div>
