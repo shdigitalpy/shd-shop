@@ -293,7 +293,7 @@ const Header = ({
                                             </a></Link>
                                             <Link href="/page-account"><a>
                                                 <span className="lable ml-0">
-                                                    Account
+                                                    Konto
                                                 </span>
                                             </a></Link>
                                             <div className="cart-dropdown-wrap cart-dropdown-hm2 account-dropdown">
