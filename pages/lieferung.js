@@ -53,7 +53,7 @@ export default function Lieferung({overview}) {
                                                   <tr key={x.shipping_price}>
 
                                                 <th scope="row">{x.weight_from}kg bis {x.weight_to}kg   </th>
-                                                <td>CHF {x.shipping_price}   </td>
+                                                <td>CHF {x.shipping_price.toFixed(2)}   </td>
                                                     
                                                   </tr>
                                                   )}

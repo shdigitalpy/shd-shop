@@ -231,14 +231,7 @@ const Cart = ({
 
                                         }
                                     </h6>
-                                    { !!(cartItems.length) && (
-                                        <h6 className="text-body">
-                                            <a onClick={clearCart} className="text-muted">
-                                                <i className="fi-rs-trash mr-5"/>
-                                                {t("cart-remove")}
-                                            </a>
-                                        </h6>
-                                    )}
+                                    
                                 </div>
                             </div>
                         </div>
@@ -306,7 +299,7 @@ const Cart = ({
                                                         data-title="Price"
                                                     >
                                                         <h4 className="text-brand">
-                                                            CHF {item.price}
+                                                            CHF {item.price.toFixed(2)}
                                                         </h4>
                                                     </td>
                                                     <td
@@ -345,9 +338,7 @@ const Cart = ({
                                                         data-title="Cart"
                                                     >
                                                         <h4 className="text-body">
-                                                            CHF
-                                                            {item.quantity *
-                                                                item.price}
+                                                            CHF {(item.quantity * item.price).toFixed(2)}
                                                         </h4>
                                                     </td>
                                                     <td
