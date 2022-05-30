@@ -208,7 +208,7 @@ function Account({ fetchProducts, products, auth, validateRedirect }) {
                                                                                     <td>CHF { order.total_order_amount.toFixed(2) } / { order.products.length } { order.products.length > 1 ? `${t("account-orders-items")}`: `${t("account-orders-items")}` }</td>
                                                                                     <td>
                                                                                         { (activeOrder === order.id) ?
-                                                                                            <button className="btn btn-xs btn-link d-block" onClick={() => setActiveOrder(null)}>Close</button>
+                                                                                            <button className="btn btn-xs btn-link d-block" onClick={() => setActiveOrder(null)}>Schliessen</button>
                                                                                             : <button className="btn btn-xs d-block" onClick={() => setActiveOrder(order.id)}>{t("account-orders-view")}</button>
                                                                                         }
                                                                                     </td>
@@ -234,11 +234,11 @@ function Account({ fetchProducts, products, auth, validateRedirect }) {
                                                                                                                         <a>{ product.title }</a>
                                                                                                                     </Link>
                                                                                                                 </h6>
-                                                                                                                <h6 className="price">${product.price} | Qty. {el.quantity}</h6>
+                                                                                                                <h6 className="price">CHF {product.price} | # {el.quantity}</h6>
                                                                                                             </div>
 
                                                                                                             <div className="ms-auto me-3">
-                                                                                                                <h6 className="text-brand">${(product.price * el.quantity).toFixed(2)}</h6>
+                                                                                                                <h6 className="text-brand">CHF {(product.price * el.quantity).toFixed(2)}</h6>
                                                                                                             </div>
                                                                                                         </div>
                                                                                                     )
@@ -247,20 +247,19 @@ function Account({ fetchProducts, products, auth, validateRedirect }) {
                                                                                                 <div className="mb-3 mt-4 d-flex flex-wrap">
                                                                                                     <div className="d-flex">
                                                                                                         <div className="me-4">
-                                                                                                            <h6 className="mb-2">Shipping Address</h6>
+                                                                                                            <h6 className="mb-2">Lieferadresse</h6>
                                                                                                             <div>
-                                                                                                                <span className="d-block">{ `${shippingAddress?.number}, ${shippingAddress?.street} `}</span>
-                                                                                                                <span className="d-block">{ `${shippingAddress?.city} `}</span>
-                                                                                                                <span className="d-block">{ `${shippingAddress?.country}, ${shippingAddress?.zipcode} `}</span>
+                                                                                                                <span className="d-block">{ `${shippingAddress?.street}, ${shippingAddress?.number} `}</span>
+                                                                                                                <span className="d-block">{ `${shippingAddress?.country} - ${shippingAddress?.zipcode}, ${shippingAddress?.city} `}</span>
+                                                                                                                
                                                                                                             </div>
                                                                                                         </div>
 
                                                                                                         <div>
-                                                                                                            <h6 className="mb-2">Billing Address</h6>
+                                                                                                            <h6 className="mb-2">Rechnungsadresse</h6>
                                                                                                             <div>
-                                                                                                                <span className="d-block">{ `${billingAddress?.number}, ${billingAddress?.street} `}</span>
-                                                                                                                <span className="d-block">{ `${billingAddress?.city} `}</span>
-                                                                                                                <span className="d-block">{ `${billingAddress?.country}, ${billingAddress?.zipcode} `}</span>
+                                                                                                                <span className="d-block">{ `${billingAddress?.street}, ${billingAddress?.number} `}</span>
+                                                                                                                <span className="d-block">{ `${billingAddress?.country} - ${billingAddress?.zipcode}, ${billingAddress?.city} `}</span>
                                                                                                             </div>
                                                                                                         </div>
                                                                                                     </div>
@@ -274,7 +273,7 @@ function Account({ fetchProducts, products, auth, validateRedirect }) {
                                                                                                         <div>
                                                                                                             <h5>Total</h5>
                                                                                                             <h4 className="price text-brand">
-                                                                                                                ${order.total_order_amount.toFixed(2)}
+                                                                                                                CHF {order.total_order_amount.toFixed(2)}
                                                                                                             </h4>
                                                                                                         </div>
                                                                                                     </div>

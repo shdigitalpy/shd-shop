@@ -302,7 +302,7 @@ const Header = ({
                                                         <Link href="/page-account">
                                                             <a>
                                                                 <i className="fi fi-rs-user mr-10"></i>
-                                                                My Account
+                                                                Mein Konto
                                                             </a></Link>
                                                     </li>
                                                     {/*<li>
@@ -320,7 +320,7 @@ const Header = ({
                                                     <li>
                                                         <Link href="/shop-wishlist"><a>
                                                             <i className="fi fi-rs-heart mr-10"></i>
-                                                            My Wishlist
+                                                           Merkliste
                                                         </a></Link>
                                                     </li>
                                                     {/*<li>
@@ -332,7 +332,7 @@ const Header = ({
                                                     <li>
                                                         <a onClick={signOutHandler}>
                                                             <i className="fi fi-rs-sign-out mr-10"></i>
-                                                            Sign out
+                                                            Logout
                                                         </a>
                                                     </li>
                                                 </ul>
