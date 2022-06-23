@@ -15,7 +15,7 @@ import {
     openCart,
 } from "../redux/action/cart";
 import getStripe from "../lib/get-stripe";
-import {getCurrentUser, getCoupons, getShippingCost} from "../rest/calls";
+import {getCurrentUser, getCoupons, getShippingCost, initPayment} from "../rest/calls";
 
 
 // Make sure to call `loadStripe` outside of a component’s render to avoid
@@ -46,6 +46,7 @@ const Cart = ({
     const [appliedCoupon, setAppliedCoupon] = useState(null);
     const [couponValid, setCouponValid] = useState(null);
     const [discountAmount, setDiscountAmount] = useState(0);
+    const [transactionID, setTransactionID] = useState(null);
 
     const price = () => {
         let price = 0;
@@ -92,7 +93,7 @@ const Cart = ({
     };
 
     const redirectToCheckout = async () => {
-        const { data: { id } } = await axios.post('/api/checkout_sessions', {
+        /*const { data: { id } } = await axios.post('/api/checkout_sessions', {
             items: cartItems.map(item => ({
                 price: item.stripe_price_id,
                 quantity: item.quantity,
@@ -102,7 +103,34 @@ const Cart = ({
         });
 
         const stripe = window.Stripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
-        await stripe.redirectToCheckout({ sessionId: id });
+        await stripe.redirectToCheckout({ sessionId: id });*/
+
+        let amount = price();
+        if (amount > 0) {
+            amount -= discountAmount;
+
+            if (shippingCost) {
+                amount += shippingCost;
+            }
+
+            amount = amount.toFixed(2);
+        }
+        amount *= 100;
+
+        const data = await initPayment({
+            currency: 'CHF',
+            amount,
+            discount: discountAmount,
+            coupon_code: appliedCoupon,
+        });
+
+        if (data?.transactionId) {
+            setTransactionID(data.transactionId);
+            localStorage.setItem('txn_id', data.transactionId);
+            window.location = `https://pay.sandbox.datatrans.com/v1/start/${data.transactionId}`;
+        }
+
+        console.log("transaction", data);
     }
 
     const fetchCurrentUser = async () => {
@@ -211,7 +239,7 @@ const Cart = ({
                                 <h1 className="heading-2 mb-10">{t("cart-name")}</h1>
                                 <div className="d-flex justify-content-between">
                                     <h6 className="text-body">
-                                        { cartItems.lenght > 1 ? 
+                                        { cartItems.lenght > 1 ?
 
                                             `${t("there-many")}`
 
@@ -221,7 +249,7 @@ const Cart = ({
 
                                         }{" "}
                                         <span className="text-brand">{ cartItems.length }</span>{" "}
-                                        { cartItems.lenght > 1 ? 
+                                        { cartItems.lenght > 1 ?
 
                                             `${t("cart-more")}`
 
@@ -231,10 +259,14 @@ const Cart = ({
 
                                         }
                                     </h6>
-                                    
+
                                 </div>
                             </div>
                         </div>
+
+                        {/*<div className={`payment-iframe ${transactionID ? 'show' : ''}`}>
+                            <iframe src={`${transactionID ? `https://pay.sandbox.datatrans.com/v1/start/${transactionID}` : ''}`}/>
+                        </div>*/}
                         <div className="row">
                             <div className="col-lg-8">
                                 <div className="table-responsive shopping-summery">
@@ -359,7 +391,7 @@ const Cart = ({
                                                 </tr>
                                             ))}
 
-                                          
+
 
                                             <tr>
                                                 <td
@@ -384,19 +416,19 @@ const Cart = ({
                                 </div>
 
                                 <div>
-                                    
+
 
                                 </div>
 
                                 <div className="cart-action text-end">
-                                    
+
 
                                 <h4 className="text-brand">Total: CHF {price()}</h4>
-                                <br />                                      
-                                                
-                                             
+                                <br />
 
-                                    
+
+
+
 
                                     {cartItems.length <= 0 ?
 
@@ -405,32 +437,32 @@ const Cart = ({
                                         :
 
                                         <>
-                                    { !auth && 
+                                    { !auth &&
                                     <Link href="/page-login" >
                                         <a className="btn " style={{ marginRight: "0.5rem" }}>
-                                            
+
                                             {t("cart-checkout")}
                                         </a>
                                     </Link>
                                  }
 
-                                { auth && 
-                                    
+                                { auth &&
+
                                         <a onClick={() => scrollTo(300,500)} className="btn " style={{ marginRight: "0.5rem" }}>
-                                            
+
                                             {t("cart-checkout")}
                                         </a>
-                                    
+
                                  }
                                  </>
 
-                             
+
 
                              }
 
-                                 
 
-                                    
+
+
 
                                     <Link href="/">
                                         <a className="" style={{ textDecoration: "underline" }}>
@@ -484,7 +516,7 @@ const Cart = ({
                                                 { !selectExisting && (
                                                     <>
                                                         <h6 className="mb-3">{t("cart-shipping-address")}</h6>
-                                                        
+
                                                         <div className="form-row">
                                                             <div className="form-group col-md-9">
                                                                 <input
@@ -507,7 +539,7 @@ const Cart = ({
                                                             </div>
                                                         </div>
 
-                                                        
+
 
                                                         <div className="form-row">
                                                             <div className="form-group col-lg-3">
@@ -528,24 +560,24 @@ const Cart = ({
                                                                     type="text"
                                                                 />
                                                             </div>
-                                                            
+
                                                         </div>
 
                                                         <div className="form-row row">
-                                                            
+
 
                                                             <div className="form-group col-lg-6">
                                                                 <div className="custom_select full-height">
                                                                     <select className="form-control select-active" name="country" defaultValue={shippingAddress?.country} required>
-                                                                                                                                                
+
                                                                         <option value="CH">
                                                                             Schweiz
                                                                         </option>
-                                                                        
+
                                                                     </select>
                                                                 </div>
                                                             </div>
-                                                            
+
                                                         </div>
 
                                                         <div className="custome-checkbox mb-3">
@@ -560,7 +592,7 @@ const Cart = ({
                                                         { !billingAddressSame && (
                                                             <>
                                                                 <h6 className="my-3">{t("cart-billing-address")}</h6>
-                                                                
+
                                                                 <div className="form-row">
                                                                     <div className="form-group col-lg-9">
                                                                         <input
@@ -584,7 +616,7 @@ const Cart = ({
                                                                 </div>
 
                                                                 <div className="form-row">
-                                                                    
+
                                                                 </div>
 
                                                                 <div className="form-row">
@@ -608,22 +640,22 @@ const Cart = ({
                                                                     </div>
                                                                 </div>
 
-                                                                
+
 
                                                                 <div className="form-row row">
-                                                                    
+
                                                                     <div className="form-group col-lg-6">
                                                                         <div className="custom_select full-height">
                                                                             <select className="form-control select-active" name="b_address_country" defaultValue={billingAddress?.country} required>
-                                                                                                                                                            
+
                                                                                 <option value="CH">
                                                                                     Schweiz
                                                                                 </option>
-                                                                             
+
                                                                             </select>
                                                                         </div>
                                                                     </div>
-                                                                    
+
                                                                 </div>
                                                             </>
                                                         )}
@@ -668,8 +700,8 @@ const Cart = ({
                                                         <div>
                                                             { billingAddress?.street } { billingAddress?.number } <br/>
                                                             { billingAddress?.country } - { billingAddress?.zipcode } { billingAddress?.city } <br/>
-                                                            
-                                                            
+
+
                                                         </div>
                                                     </div>
                                                 )}
@@ -713,7 +745,7 @@ const Cart = ({
                                                                     { couponValid === false && <small className="text-danger">{t("cart-coupon-error")}</small> }
                                                                 </>
                                                             )}
-                                                            
+
                                                         </div>
                                                     </div>
                                                 </div>
@@ -800,7 +832,7 @@ const Cart = ({
                                                                 </label>
                                                         </div>
 
-                                            
+
 
                                             { (price() > 0) && (
                                                 <button type="submit" className="btn" style={{ width: "100%" }} onClick={redirectToCheckout}>

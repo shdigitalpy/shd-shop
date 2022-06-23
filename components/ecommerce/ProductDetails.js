@@ -14,7 +14,6 @@ import ProductTab from "../elements/ProductTab";
 import RelatedSlider from "../sliders/Related";
 import ThumbSlider from "../sliders/Thumb";
 import { useTranslation } from 'react-i18next';
-import { fetchProducts } from "../../redux/action/product";
 import Head from "next/head";
 
 
@@ -34,22 +33,41 @@ const ProductDetails = ({
     const [quantity, setQuantity] = useState(1);
     const [isWishlisted, setIsWishlisted] = useState(false);
     const [attributProduct, setAttributProduct] = useState(null);
+    const [selectedAttribut, setSelectedAttribut] = useState(null);
     const [price, setPrice] = useState(0);
 
     const {t} = useTranslation();
 
     const handleCart = (product) => {
-        addToCart(product);
+        const updatedProduct = {
+            ...product,
+            price,
+            variant: selectedAttribut?.name,
+        };
+
+        addToCart(updatedProduct);
         toast(`${t("toastify-cart")}`);
     };
 
     const handleCompare = (product) => {
-        addToCompare(product);
+        const updatedProduct = {
+            ...product,
+            price,
+            variant: selectedAttribut?.name,
+        };
+
+        addToCompare(updatedProduct);
         toast(`${t("toastify-compare")}`);
     };
 
     const handleWishlist = (product) => {
-        addToWishlist(product);
+        const updatedProduct = {
+            ...product,
+            price,
+            variant: selectedAttribut?.name,
+        };
+
+        addToWishlist(updatedProduct);
         setIsWishlisted(true);
         toast(`${t("toastify-wishlist")}`);
     };
@@ -61,9 +79,12 @@ const ProductDetails = ({
     };
 
     const attributChangeHandler = (e) => {
-        const amount = e.target.value;
+        const [name, sortIndex, amount] = e.target.value.split('_');
+
         if (!isNaN(amount)) {
-            setPrice(parseInt(amount));
+            setPrice(Number(amount));
+            setSelectedAttribut({sortIndex, name})
+            // updateAttribute(product.id, parseInt(amount));
         }
     };
 
@@ -75,8 +96,6 @@ const ProductDetails = ({
             const attributeNames = product.attribut_product
                 .map(item => item.value.name)
                 .filter((item,i,allItems) => i == allItems.indexOf(item));
-
-            // console.log("temp ", attributeNames)
 
             const updatedAttributProduct = attributeNames.map(name => ({
                 attributName: name,
@@ -93,23 +112,18 @@ const ProductDetails = ({
 
     const inCart = cartItems.find((cartItem) => cartItem.id === product.id);
 
-  
+
 
     return (
 
         <>
-
-        
-      
-
-        
-                <Head>  
+                <Head>
                     <title>{product.meta_title}</title>
                     <meta name="description" content={product.meta_description} />
-                   
+
                     </Head>
 
-                    
+
             <section className="mt-50 mb-50">
                 <div className="container">
                     <div className="row flex-row-reverse">
@@ -126,20 +140,14 @@ const ProductDetails = ({
                                     <div className="col-md-6 col-sm-12 col-xs-12">
                                         <div className="detail-info  pr-30 pl-30">
                                             <span className="stock-status out-stock"> {t("product-saleoff")} </span>
-                                            
-                                            {/* SEO */}
 
-                                             
+                                            {/* SEO */}
 
                                             <div itemScope itemType="https://schema.org/Product">{/* SEO */}
                                             <h2 className="title-detail"><span itemProp="name">{product.title}</span></h2>
                                             <div className="product-detail-rating">
                                                 <div className="product-rate-cover text-end">
                                                     <div className="product-rate d-inline-block">
-
-                                                    
-        
-
 
                                                         <div itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating"
                                                         className="product-rating" style={{ width: `${(product.total_stars / 5) * 100}%` }}></div>
@@ -170,7 +178,7 @@ const ProductDetails = ({
                                                             <strong className="mr-10 text-capitalize">{item.attributName}</strong>
                                                             <select className="attribut-dropdown" onChange={attributChangeHandler}>
                                                                 { item.attributes.map((attribut, index) => (
-                                                                    <option key={index} value={attribut.amount}>{attribut.name}</option>
+                                                                    <option key={index} value={`${attribut.name}_${attribut.sort}_${attribut.amount}`}>{attribut.name}</option>
                                                                 ))}
                                                             </select>
                                                         </Fragment>
@@ -238,9 +246,9 @@ const ProductDetails = ({
                                                     Artikel-Nr.:
                                                     <a href="#"> {product.id}</a>
                                                 </li>
-                                                
+
                                                 <li>
-                                                
+
                                                     Lieferzeit:
                                                     <span className="in-stock text-success ml-5"><link itemProp="availability" href="https://schema.org/InStock" />{product.shipping_time}</span>
                                                 </li>
@@ -266,7 +274,7 @@ const ProductDetails = ({
                                 )}
                             </div>
                             </div>
-          
+
                         </div>
                     </div>
                 </div>

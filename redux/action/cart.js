@@ -4,7 +4,7 @@ import storage from '../../util/localStorage';
 export const addToCart = product => dispatch => {
     dispatch({
         type: Types.ADD_TO_CART,
-        payload: { product } 
+        payload: { product }
     })
 }
 
@@ -31,6 +31,13 @@ export const decreaseQuantity = productId => dispatch => {
     })
 }
 
+/*export const updateAttribute = (productId, attribute) => dispatch => {
+    console.log("entered action", productId, attribute)
+    dispatch({
+        type: Types.UPDATE_ATTRIBUTE,
+        payload: { productId, attribute }
+    })
+}*/
 
 
 export const openCart = () => dispatch => {

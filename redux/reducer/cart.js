@@ -51,6 +51,15 @@ export default (state = [], action) => {
 
             return [...state];
 
+        /*case Types.UPDATE_ATTRIBUTE:
+            index = findProductIndexById(state, action.payload.productId);
+            console.log('update attribute', index, state, action.payload.productId)
+            if (index === -1) return state;
+
+            storage.set("dokani_cart", [...state]);
+
+            return [...state];*/
+
         case Types.CLEAR_CART:
             storage.set("dokani_cart", []);
             return [];

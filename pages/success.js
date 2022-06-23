@@ -1,22 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import Link from "next/link";
-import useSWR from 'swr';
 import Layout from "./../components/layout/Layout";
 import { connect } from "react-redux";
 import { clearCart } from "../redux/action/cart";
-import {useRouter} from "next/router";
-import {fetcher} from "../util/util";
 import {getCurrentUser, createOrder} from "../rest/calls";
 import Loading from "../components/elements/Loading";
 
 const Success = ({ cart, clearCart, auth, validateRedirect }) => {
     const [ready, setReady] = useState(false);
     const [orderSuccess, setOrderSuccess] = useState(null);
-    const { query: { session_id } } = useRouter();
+    const [txnID, setTxnID] = useState('');
 
-    const { data, error } = useSWR(() => `/api/checkout_sessions/${session_id}`, fetcher);
-
-    const saveOrderHandler = async () => {
+    const saveOrderHandler = async (dataTransTxnID) => {
         const user = await getCurrentUser();
 
         const shippingAddress = JSON.parse(localStorage.getItem('shipping-address'));
@@ -24,7 +19,7 @@ const Success = ({ cart, clearCart, auth, validateRedirect }) => {
 
         const data = {
             user: user.id,
-            stripe_session_id: session_id,
+            datatrans_trans_id: dataTransTxnID,
             invoice_address: shippingAddress,
             shipping_address: billingAddress,
             products: cart.map(item => ({
@@ -38,7 +33,7 @@ const Success = ({ cart, clearCart, auth, validateRedirect }) => {
                 orderSuccessHandler();
             })
             .catch(err => {
-                console.error("Order placed with stripe but unable to save to database. Error message: ", err.message);
+                console.error(err.message);
                 setOrderSuccess(false);
             });
     };
@@ -46,13 +41,16 @@ const Success = ({ cart, clearCart, auth, validateRedirect }) => {
     const orderSuccessHandler = () => {
         clearCart();
         setOrderSuccess(true);
+        localStorage.removeItem('txn_id');
     }
 
     useEffect( () => {
-        if (data) {
-            saveOrderHandler();
+        const dataTransTxnID = localStorage.getItem('txn_id');
+        if (dataTransTxnID && cart.length > 0) {
+            setTxnID(dataTransTxnID);
+            saveOrderHandler(dataTransTxnID);
         }
-    }, [data]);
+    }, [cart]);
 
     useEffect(() => {
         validateRedirect();
@@ -77,7 +75,7 @@ const Success = ({ cart, clearCart, auth, validateRedirect }) => {
     return (
         <>
             <Layout noBreadcrumb="d-none">
-                { ((session_id && orderSuccess === null) || !ready) && (
+                { ((txnID && orderSuccess === null) || !ready) && (
                     <div className="text-center py-5">
                         <Loading />
                         <strong>Processing order. Please wait...</strong>
@@ -86,9 +84,9 @@ const Success = ({ cart, clearCart, auth, validateRedirect }) => {
 
                 { ready && (
                     <>
-                        { (session_id && orderSuccess) && (
+                        { (txnID && orderSuccess) && (
                             <div className="text-center py-5">
-                                { !!(session_id && data) && (
+                                { !!(txnID && orderSuccess) && (
                                     <>
                                         <h1>Order successful!</h1>
                                         <Link href="/">Click here to go to homepage</Link>
@@ -97,14 +95,14 @@ const Success = ({ cart, clearCart, auth, validateRedirect }) => {
                             </div>
                         )}
 
-                        { (session_id && orderSuccess === false) && (
+                        { (txnID && orderSuccess === false) && (
                             <div className="text-center py-5">
                                 <h1>Unable to place your order. Please try again!</h1>
                                 <Link href="/">Click here to go to homepage</Link>
                             </div>
                         )}
 
-                        { !session_id && (
+                        { (txnID === '') && (
                             <div className="text-center py-5">
                                 <h1>Invalid request. Something went wrong!</h1>
                                 <Link href="/">Click here to go to homepage</Link>

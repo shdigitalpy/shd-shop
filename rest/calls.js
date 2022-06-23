@@ -135,14 +135,14 @@ export const getOrders = async () => {
     }
 };
 
-export const createOrder = async ({ user, invoice_address, shipping_address, stripe_session_id, products }) => {
+export const createOrder = async ({ user, invoice_address, shipping_address, datatrans_trans_id, products }) => {
     try {
         const request = await axios.post('/orders/', {
             user,
             products,
             invoice_address,
             shipping_address,
-            stripe_session_id,
+            datatrans_trans_id,
         });
         console.log("order created ", request.data)
         return await request.data;
@@ -183,4 +183,13 @@ export const getShippingCost = async (cartData) => {
     }
 };
 
+export const initPayment = async (cartData) => {
+    try {
+        const request = await axios.post('/init/', cartData);
+        return request.data;
+    } catch (err) {
+        console.log(err);
+        throw err;
+    }
+};
 
