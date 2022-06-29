@@ -231,7 +231,7 @@ const Cart = ({
                     <div className="container">
                         <div className="row">
                             <div className="col-lg-8 mb-40">
-                                <h1 className="heading-2 mb-10">Warenkorb1</h1>
+                                <h1 className="heading-2 mb-10">Warenkorb</h1>
                                 <div className="d-flex justify-content-between">
                                     <h6 className="text-body">
                                         { cartItems.lenght > 1 ?
