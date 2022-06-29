@@ -2,8 +2,13 @@ import axios from 'axios';
 import { useTranslation } from 'react-i18next';
 
 // Delete Product from List By Id
-export const deleteProduct = (list, id) => {
-    const filter = list.filter((item) => item.id !== id);
+export const deleteProduct = (list, {id, variant}) => {
+    const filter = list.filter((item) => {
+        if (item.variant) {
+            return item.id !== id || item.variant !== variant;
+        }
+        return item.id !== id;
+    });
     return filter;
 };
 
@@ -14,6 +19,16 @@ export const findProductIndex = (list, slug) => {
 };
 export const findProductIndexById = (list, id) => {
     const index = list.findIndex((item) => item.id === id);
+    return index;
+};
+
+export const findProductIndexByIdAndVariant = (list, { id, variant }) => {
+    const index = list.findIndex((item) => {
+        if (item.variant) {
+            return item.id === id && item.variant === variant;
+        }
+        return item.id === id;
+    });
     return index;
 };
 

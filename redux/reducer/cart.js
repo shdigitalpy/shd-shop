@@ -1,5 +1,5 @@
 import storage from "../../util/localStorage";
-import { deleteProduct, findProductIndexById } from "../../util/util";
+import {deleteProduct, findProductIndexByIdAndVariant} from "../../util/util";
 import * as Types from "../constants/actionTypes";
 
 export default (state = [], action) => {
@@ -10,7 +10,7 @@ export default (state = [], action) => {
             return [...action.payload.cart];
 
         case Types.ADD_TO_CART:
-            index = findProductIndexById(state, action.payload.product.id);
+            index = findProductIndexByIdAndVariant(state, action.payload.product);
 
             if (index !== -1) {
                 state[index].quantity += 1;
@@ -27,13 +27,14 @@ export default (state = [], action) => {
             }
 
         case Types.DELETE_FROM_CART:
-            const newCartItems = deleteProduct(state, action.payload.productId);
+            const newCartItems = deleteProduct(state, action.payload.product);
             storage.set("dokani_cart", newCartItems);
 
             return [...newCartItems];
 
         case Types.INCREASE_QUANTITY:
-            index = findProductIndexById(state, action.payload.productId);
+            console.log("attempted", action.payload.product)
+            index = findProductIndexByIdAndVariant(state, action.payload.product);
             if (index === -1) return state;
 
             state[index].quantity += 1;
@@ -42,7 +43,7 @@ export default (state = [], action) => {
             return [...state];
 
         case Types.DECREASE_QUANTITY:
-            index = findProductIndexById(state, action.payload.productId);
+            index = findProductIndexByIdAndVariant(state, action.payload.product);
             if (index === -1) return state;
 
             const quantity = state[index].quantity;

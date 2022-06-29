@@ -24,6 +24,8 @@ const Success = ({ cart, clearCart, auth, validateRedirect }) => {
             shipping_address: billingAddress,
             products: cart.map(item => ({
                 id: item.id,
+                variant: item.variant,
+                price: item.price,
                 quantity: item.quantity,
             })),
         };

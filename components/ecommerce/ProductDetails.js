@@ -89,6 +89,17 @@ const ProductDetails = ({
     };
 
     useEffect(() => {
+        if (selectedAttribut) {
+            const attributProductsInCart = cartItems.filter(item => (item.id === product.id && item.variant === selectedAttribut?.name));
+            if (attributProductsInCart.length > 1) {
+                setQuantity(attributProductsInCart.quantity);
+            } else {
+                setQuantity(1);
+            }
+        }
+    }, [selectedAttribut]);
+
+    useEffect(() => {
         const wishlisted = wishlist.items.find(item => item.id === product.id);
         setIsWishlisted(!!wishlisted);
 
@@ -105,13 +116,21 @@ const ProductDetails = ({
 
             setPrice(updatedAttributProduct[0].attributes[0].amount)
             setAttributProduct(updatedAttributProduct);
+            setSelectedAttribut({
+                sortIndex: updatedAttributProduct[0].attributes[0].sort,
+                name: updatedAttributProduct[0].attributes[0].name
+            });
         } else {
             setPrice(product.price);
         }
     }, []);
 
-    const inCart = cartItems.find((cartItem) => cartItem.id === product.id);
-
+    let inCart = cartItems.find((cartItem) => {
+        if (selectedAttribut) {
+            return (cartItem.id === product.id && cartItem.variant === selectedAttribut?.name);
+        }
+        return cartItem.id === product.id;
+    });
 
 
     return (
@@ -206,11 +225,11 @@ const ProductDetails = ({
                                             <div className="bt-1 border-color-1 mt-30 mb-30"></div>
                                             <div className="detail-extralink">
                                                 <div className="detail-qty border radius">
-                                                    <a onClick={(e) => (!inCart ? setQuantity(quantity > 1 ? quantity - 1 : 1) : decreaseQuantity(product?.id))} className="qty-down">
+                                                    <a onClick={(e) => (!inCart ? setQuantity(quantity > 1 ? quantity - 1 : 1) : decreaseQuantity({...product, price, variant: selectedAttribut?.name}))} className="qty-down">
                                                         <i className="fi-rs-angle-small-down"></i>
                                                     </a>
                                                     <span className="qty-val">{inCart?.quantity || quantity}</span>
-                                                    <a onClick={() => (!inCart ? setQuantity(quantity + 1) : increaseQuantity(product.id))} className="qty-up">
+                                                    <a onClick={() => (!inCart ? setQuantity(quantity + 1) : increaseQuantity({...product, price, variant: selectedAttribut?.name}))} className="qty-up">
                                                         <i className="fi-rs-angle-small-up"></i>
                                                     </a>
                                                 </div>

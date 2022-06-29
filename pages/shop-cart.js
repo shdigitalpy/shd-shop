@@ -129,8 +129,6 @@ const Cart = ({
             localStorage.setItem('txn_id', data.transactionId);
             window.location = `https://pay.sandbox.datatrans.com/v1/start/${data.transactionId}`;
         }
-
-        console.log("transaction", data);
     }
 
     const fetchCurrentUser = async () => {
@@ -311,6 +309,7 @@ const Cart = ({
                                                                 </a>
                                                             </Link>
                                                         </h6>
+                                                        <p className="text-dark font-sm font-weight-bold">{item.variant && `(${item.variant})`}</p>
                                                         <div className="product-rate-cover">
                                                             <div className="product-rate d-inline-block">
                                                                 <div
@@ -342,7 +341,7 @@ const Cart = ({
                                                             <a
                                                                 onClick={(e) =>
                                                                     decreaseQuantity(
-                                                                        item.id
+                                                                        item
                                                                     )
                                                                 }
                                                                 className="qty-down"
@@ -355,7 +354,7 @@ const Cart = ({
                                                             <a
                                                                 onClick={(e) =>
                                                                     increaseQuantity(
-                                                                        item.id
+                                                                        item
                                                                     )
                                                                 }
                                                                 className="qty-up"
@@ -380,7 +379,7 @@ const Cart = ({
                                                         <a
                                                             onClick={(e) =>
                                                                 deleteFromCart(
-                                                                    item.id
+                                                                    item
                                                                 )
                                                             }
                                                             className="text-muted"

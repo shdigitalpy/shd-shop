@@ -9,25 +9,25 @@ export const addToCart = product => dispatch => {
 }
 
 
-export const deleteFromCart = productId => dispatch => {
+export const deleteFromCart = product => dispatch => {
     dispatch({
         type: Types.DELETE_FROM_CART,
-        payload: { productId }
+        payload: { product }
     })
 }
 
-export const increaseQuantity = productId => dispatch => {
+export const increaseQuantity = product => dispatch => {
     dispatch({
         type: Types.INCREASE_QUANTITY,
-        payload: { productId }
+        payload: { product }
     })
 }
 
 
-export const decreaseQuantity = productId => dispatch => {
+export const decreaseQuantity = product => dispatch => {
     dispatch({
         type: Types.DECREASE_QUANTITY,
-        payload: { productId }
+        payload: { product }
     })
 }
 
