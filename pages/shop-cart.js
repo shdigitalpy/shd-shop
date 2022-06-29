@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
 import Layout from "../components/layout/Layout";
-import { loadStripe } from '@stripe/stripe-js';
 
 import Link from "next/link";
 import {
