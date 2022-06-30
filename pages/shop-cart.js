@@ -125,7 +125,7 @@ const Cart = ({
         if (data?.transactionId) {
             setTransactionID(data.transactionId);
             localStorage.setItem('txn_id', data.transactionId);
-            window.location = `https://pay.datatrans.com/v1/start/${data.transactionId}`;
+            window.location = `https://api.sandbox.datatrans.com/v1/start/${data.transactionId}`;
         }
     }
 
