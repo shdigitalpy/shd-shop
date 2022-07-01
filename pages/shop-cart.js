@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
 import Layout from "../components/layout/Layout";
+import { loadStripe } from '@stripe/stripe-js';
+import { useTranslation } from 'react-i18next';
 
 import Link from "next/link";
 import {
@@ -44,6 +46,7 @@ const Cart = ({
     const [appliedCoupon, setAppliedCoupon] = useState(null);
     const [couponValid, setCouponValid] = useState(null);
     const [discountAmount, setDiscountAmount] = useState(0);
+    const [acceptedTnC, setAcceptedTnC] = useState(false);
     const [transactionID, setTransactionID] = useState(null);
 
     const price = () => {
@@ -136,9 +139,9 @@ const Cart = ({
 
     const fetchShippingCost = async () => {
         const cartData = {
-            user: currentUser.id,
+            user: currentUser?.id,
             products: cartItems.map(item => ({
-                item: item.id,
+                item: item?.id,
                 quantity: item.quantity,
             })),
         };
@@ -208,7 +211,7 @@ const Cart = ({
     }, [auth]);
 
     useEffect(() => {
-        if (currentUser.id) {
+        if (currentUser?.id) {
             if (cartItems.length > 0) {
                 setShippingCost(null);
                 fetchShippingCost();
@@ -223,6 +226,7 @@ const Cart = ({
     const myRef = useRef(null)
     const executeScroll = () => scrollToRef(myRef)
 
+    const {t} = useTranslation();
 
     return (
         <>
@@ -231,26 +235,26 @@ const Cart = ({
                     <div className="container">
                         <div className="row">
                             <div className="col-lg-8 mb-40">
-                                <h1 className="heading-2 mb-10">Warenkorb</h1>
+                                <h1 className="heading-2 mb-10">{t("cart-name")}</h1>
                                 <div className="d-flex justify-content-between">
                                     <h6 className="text-body">
                                         { cartItems.lenght > 1 ?
 
-                                            `Es ist`
+                                            `${t("there-many")}`
 
                                             :
 
-                                            `Es sind`
+                                            `${t("there-are")}`
 
                                         }{" "}
                                         <span className="text-brand">{ cartItems.length }</span>{" "}
                                         { cartItems.lenght > 1 ?
 
-                                            `Produkte im Warenkorb`
+                                            `${t("cart-more")}`
 
                                             :
 
-                                            `Produkt im Warenkorb`
+                                            `${t("cart-one")}`
 
                                         }
                                     </h6>
@@ -276,13 +280,13 @@ const Cart = ({
                                         <thead>
                                             <tr className="main-heading">
                                                 <th className="custome-checkbox start pl-30" colSpan="2">
-                                                    Produkte
+                                                    {t("cart-title")}
                                                 </th>
-                                                <th scope="col">Stückpreis</th>
-                                                <th scope="col">Anzahl</th>
-                                                <th scope="col">Zwischentotal</th>
+                                                <th scope="col">{t("cart-unit-price")}</th>
+                                                <th scope="col">{t("cart-units")}</th>
+                                                <th scope="col">{t("cart-subtotal")}</th>
                                                 <th scope="col" className="end">
-                                                    Entfernen
+                                                    {t("cart-delete")}
                                                 </th>
                                             </tr>
                                         </thead>
@@ -400,7 +404,7 @@ const Cart = ({
                                                             className="text-muted"
                                                         >
                                                             <i className="fi-rs-cross-small"></i>
-                                                            Warenkorb leeren
+                                                            {t("cart-remove")}
                                                         </a>
                                                     )}
                                                 </td>
@@ -437,7 +441,7 @@ const Cart = ({
                                     <Link href="/page-login" >
                                         <a className="btn " style={{ marginRight: "0.5rem" }}>
 
-                                            Zur Kasse
+                                            {t("cart-checkout")}
                                         </a>
                                     </Link>
                                  }
@@ -446,7 +450,7 @@ const Cart = ({
 
                                         <a onClick={() => scrollTo(300,500)} className="btn " style={{ marginRight: "0.5rem" }}>
 
-                                            Zur Kasse
+                                            {t("cart-checkout")}
                                         </a>
 
                                  }
@@ -463,7 +467,7 @@ const Cart = ({
                                     <Link href="/">
                                         <a className="" style={{ textDecoration: "underline" }}>
                                             <i className="fi-rs-shopping-bag mr-10"></i>
-                                           Weiter einkaufen
+                                            {t("cart-continue")}
                                         </a>
                                     </Link>
                                 </div>
@@ -474,14 +478,14 @@ const Cart = ({
                                 { !auth && <div className="font-xl text-center">
                                     <Link href="/page-login">
                                         <a>
-                                            <i className="fi fi-rs-user"></i> Anmelden
+                                            <i className="fi fi-rs-user"></i> {t("cart-sign-in")}
                                         </a>
                                     </Link>
                                 </div> }
                                 { auth && <div className="row mb-50" ref={scrollToRef}>
                                     <div className="col-lg-6 col-md-12">
                                         <div className="heading_s1 mb-3">
-                                            <h4>Lieferung</h4>
+                                            <h4>{t("cart-delivery")}</h4>
                                         </div>
                                         {/*<p className="mt-15 mb-30">
                                             Flat rate:
@@ -511,14 +515,14 @@ const Cart = ({
 
                                                 { !selectExisting && (
                                                     <>
-                                                        <h6 className="mb-3">Adresse</h6>
+                                                        <h6 className="mb-3">{t("cart-shipping-address")}</h6>
 
                                                         <div className="form-row">
                                                             <div className="form-group col-md-9">
                                                                 <input
                                                                     required
                                                                     defaultValue={shippingAddress?.street}
-                                                                    placeholder="Strasse"
+                                                                    placeholder={t("cart-shipping-street")}
                                                                     name="street"
                                                                     type="text"
                                                                 />
@@ -528,7 +532,7 @@ const Cart = ({
                                                                 <input
                                                                     required
                                                                     defaultValue={shippingAddress?.number}
-                                                                    placeholder="Nr."
+                                                                    placeholder={t("cart-shipping-number")}
                                                                     name="number"
                                                                     type="text"
                                                                 />
@@ -542,7 +546,7 @@ const Cart = ({
                                                                 <input
                                                                     required
                                                                     defaultValue={shippingAddress?.zipcode}
-                                                                    placeholder="PLZ"
+                                                                    placeholder={t("cart-shipping-zip")}
                                                                     name="zipcode"
                                                                     type="text"
                                                                 />
@@ -551,7 +555,7 @@ const Cart = ({
                                                                 <input
                                                                     required
                                                                     defaultValue={shippingAddress?.city}
-                                                                    placeholder="Stadt"
+                                                                    placeholder={t("cart-shipping-city")}
                                                                     name="city"
                                                                     type="text"
                                                                 />
@@ -581,7 +585,7 @@ const Cart = ({
                                                                    id="flexCheckDefault" onChange={e => setBillingAddressSame(e.target.checked)} />
                                                                 <label className="form-check-label"
                                                                        htmlFor="flexCheckDefault">
-                                                                    Rechnungsadresse ist gleich wie Lieferadresse
+                                                                    {t("cart-billing-question")}
                                                                 </label>
                                                         </div>
 
@@ -594,7 +598,7 @@ const Cart = ({
                                                                         <input
                                                                             required
                                                                             defaultValue={billingAddress?.street}
-                                                                            placeholder="Strasse"
+                                                                            placeholder={t("cart-shipping-street")}
                                                                             name="b_address_street"
                                                                             type="text"
                                                                         />
@@ -604,7 +608,7 @@ const Cart = ({
                                                                         <input
                                                                             required
                                                                             defaultValue={billingAddress?.number}
-                                                                            placeholder="Nr."
+                                                                            placeholder={t("cart-shipping-number")}
                                                                             name="b_address_number"
                                                                             type="text"
                                                                         />
@@ -620,7 +624,7 @@ const Cart = ({
                                                                         <input
                                                                             required
                                                                             defaultValue={billingAddress?.zipcode}
-                                                                            placeholder="PLZ"
+                                                                            placeholder={t("cart-shipping-zip")}
                                                                             name="b_address_zipcode"
                                                                             type="text"
                                                                         />
@@ -629,7 +633,7 @@ const Cart = ({
                                                                         <input
                                                                             required
                                                                             defaultValue={billingAddress?.city}
-                                                                            placeholder="Stadt"
+                                                                            placeholder={t("cart-shipping-city")}
                                                                             name="b_address_city"
                                                                             type="text"
                                                                         />
@@ -660,13 +664,13 @@ const Cart = ({
                                                             <div className="form-group col-lg-12">
                                                                 <button className="btn btn-sm me-2" type="submit">
                                                                     <i className="fi-rs-check mr-5" />
-                                                                    { !!(shippingAddress && billingAddress) ? `Ändern` : `Speichern` }
+                                                                    { !!(shippingAddress && billingAddress) ? `${t("cart-change")}` : `${t("cart-save")}` }
                                                                 </button>
 
                                                                 { !!(shippingAddress && billingAddress) && (
                                                                     <button className="btn btn-sm" onClick={() => setShowAddressForm(false)}>
                                                                         <i className="fi-rs-cross mr-5" />
-                                                                        Abbrechen
+                                                                        {t("cart-cancel")}
                                                                     </button>
                                                                 )}
                                                             </div>
@@ -680,7 +684,7 @@ const Cart = ({
                                             <div className="col-6">
                                                 { (shippingAddress && !showAddressForm) && (
                                                     <div className="px-2 text-dark checkout-address">
-                                                        <h6 className="mb-2">Adresse</h6>
+                                                        <h6 className="mb-2">{t("cart-shipping-address")}</h6>
                                                         <div>
                                                             { shippingAddress?.street } { shippingAddress?.number } <br/>
                                                             { shippingAddress?.country } - { shippingAddress?.zipcode } { shippingAddress?.city } <br/>
@@ -692,7 +696,7 @@ const Cart = ({
                                             <div className="col-6">
                                                 { (billingAddress && !showAddressForm) && (
                                                     <div className="px-2 text-dark checkout-address">
-                                                        <h6 className="mb-2">Rechnungsadresse</h6>
+                                                        <h6 className="mb-2">{t("cart-billing-address")}</h6>
                                                         <div>
                                                             { billingAddress?.street } { billingAddress?.number } <br/>
                                                             { billingAddress?.country } - { billingAddress?.zipcode } { billingAddress?.city } <br/>
@@ -707,7 +711,7 @@ const Cart = ({
                                                  <div className="form-group mt-3">
                                                      <button className="btn btn-sm" onClick={addressChangeClickHandler}>
                                                          <i className="fi-rs-pencil mr-5"></i>
-                                                         Ändern
+                                                         {t("cart-change")}
                                                      </button>
                                                  </div>
                                              )}
@@ -716,7 +720,7 @@ const Cart = ({
                                         { (price() > 0 && coupons) && (
                                             <div className="mb-30 mt-50">
                                                 <div className="heading_s1 mb-3">
-                                                    <h4>Gutschein</h4>
+                                                    <h4>{t("cart-coupon")}</h4>
                                                 </div>
                                                 <div className="total-amount">
                                                     <div className="left">
@@ -725,20 +729,20 @@ const Cart = ({
                                                                 <input
                                                                     type="text"
                                                                     name="coupon"
-                                                                    placeholder="Gutscheincode eingeben"
+                                                                    placeholder={t("cart-coupon-text")}
                                                                 />
                                                                 <button
                                                                     className="btn  btn-md"
                                                                     name="login"
                                                                     type="submit"
                                                                 >
-                                                                    Abschicken
+                                                                    {t("cart-coupon-send")}
                                                                 </button>
                                                             </form>
                                                             { couponValid !== null && (
                                                                 <>
-                                                                    { couponValid && <small className="text-success">Gutschein angewendet</small> }
-                                                                    { couponValid === false && <small className="text-danger">Ungültiger Gutscheincode</small> }
+                                                                    { couponValid && <small className="text-success">{t("cart-coupon-ok")}</small> }
+                                                                    { couponValid === false && <small className="text-danger">{t("cart-coupon-error")}</small> }
                                                                 </>
                                                             )}
 
@@ -751,7 +755,7 @@ const Cart = ({
                                     <div className="col-lg-6 col-md-12">
                                         <div className="border p-md-4 p-30 border-radius cart-totals">
                                             <div className="heading_s1 mb-3">
-                                                <h4>Zusammenfassung</h4>
+                                                <h4>{t("cart-total")}</h4>
                                             </div>
                                             <br />
                                             <div className="table-responsive">
@@ -759,7 +763,7 @@ const Cart = ({
                                                     <tbody>
                                                         <tr>
                                                             <td className="cart_total_label">
-                                                                Zwischentotal
+                                                                {t("cart-subtotal")}
                                                             </td>
                                                             <td className="cart_total_amount">
                                                                 <span className="font-lg fw-900 text-brand">
@@ -770,32 +774,32 @@ const Cart = ({
                                                         { (price() > 0 && appliedCoupon) && (
                                                             <tr>
                                                                 <td className="cart_total_label">
-                                                                    Rabatt
+                                                                    {t("cart-discount-total")}
                                                                 </td>
                                                                 <td className="cart_total_amount">
                                                                     <span className="font-lg fw-900 text-brand">
                                                                         {/*<i className="fisal mr-5"/>*/}
                                                                         - CHF { discountAmount }
-                                                                        <small className="text-black-50 font-sm"> ({appliedCoupon.percentage}% günstiger)</small>
+                                                                        <small className="text-black-50 font-sm"> ({appliedCoupon.percentage}% {t("cart-off")} )</small>
                                                                     </span>
                                                                 </td>
                                                             </tr>
                                                         )}
                                                         <tr>
                                                             <td className="cart_total_label">
-                                                                Lieferkosten
+                                                                {t("cart-shipping-total")}
                                                             </td>
                                                             <td className="cart_total_amount text-brand">
                                                                 <strong>
                                                                     <span className="font-lg fw-900 text-brand">
-                                                                        { (shippingCost === null) ? `Berechnung` : `CHF ${shippingCost.toFixed(2)}` }
+                                                                        { (shippingCost === null) ? `${t("cart-calc")}` : `CHF ${shippingCost.toFixed(2)}` }
                                                                     </span>
                                                                 </strong>
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <td className="cart_total_label">
-                                                                Total
+                                                                {t("cart-grand-total")}
                                                             </td>
                                                             <td className="cart_total_amount">
                                                                 <strong>
@@ -821,19 +825,19 @@ const Cart = ({
                                             <br />
                                             <br />
                                             <input className="form-check-input" type="checkbox" required
-                                            id="flexCheckAGB" />
+                                            id="flexCheckAGB" checked={acceptedTnC} onChange={e => setAcceptedTnC(e.target.checked)} />
                                             <label className="form-check-label"
                                             htmlFor="flexCheckAGB">
-                                                Ich akzeptiere die allgemeinen Geschäftsbedingungen.
+                                                {t("cart-accept")}
                                                                 </label>
                                                         </div>
 
 
 
                                             { (price() > 0) && (
-                                                <button type="submit" className="btn" style={{ width: "100%" }} onClick={redirectToCheckout}>
+                                                <button type="submit" className="btn" style={{ width: "100%" }} onClick={redirectToCheckout} disabled={!acceptedTnC}>
                                                     <i className="fi-rs-box-alt mr-10"></i>
-                                                    Jetzt kaufen
+                                                    {t("cart-proceed")}
                                                 </button>
                                             )}
                                         </div>

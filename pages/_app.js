@@ -45,7 +45,6 @@ function MyApp({ Component, pageProps, router  }) {
         new WOW.WOW().init();
 
         let token = localStorage.getItem('token');
-        console.log("app js token", token)
 
         if (!token) {
             setAuth(false);

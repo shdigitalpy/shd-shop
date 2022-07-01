@@ -9,6 +9,7 @@ import Loading from "../components/elements/Loading";
 const Success = ({ cart, clearCart, auth, validateRedirect }) => {
     const [ready, setReady] = useState(false);
     const [orderSuccess, setOrderSuccess] = useState(null);
+    const [pending, setPending] = useState(null);
     const [txnID, setTxnID] = useState('');
 
     const saveOrderHandler = async (dataTransTxnID) => {
@@ -22,17 +23,28 @@ const Success = ({ cart, clearCart, auth, validateRedirect }) => {
             datatrans_trans_id: dataTransTxnID,
             invoice_address: shippingAddress,
             shipping_address: billingAddress,
-            products: cart.map(item => ({
-                id: item.id,
-                variant: item.variant,
-                price: item.price,
-                quantity: item.quantity,
-            })),
+            products: cart.map(item => {
+                if (item.variant) {
+                    return {
+                        id: item.id,
+                        variant: item.variant,
+                        variant_price: item.variant ? item.price : null,
+                        quantity: item.quantity,
+                    };
+                }
+
+                return {
+                    id: item.id,
+                    quantity: item.quantity,
+                };
+            }),
         };
 
+        setReady(false);
         createOrder(data)
             .then(res => {
                 orderSuccessHandler();
+                setReady(true);
             })
             .catch(err => {
                 console.error(err.message);
@@ -59,7 +71,7 @@ const Success = ({ cart, clearCart, auth, validateRedirect }) => {
 
         setTimeout(() => {
             setReady(true);
-        }, 1500);
+        }, 3000);
     }, []);
 
     /*useEffect(() => {
