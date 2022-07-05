@@ -4130,7 +4130,7 @@ table .product-thumbnail img {
 }
 
 .product-cart-wrap .product-content-wrap .product-price span {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: bold;
   color: green;
 }
@@ -5059,7 +5059,7 @@ table .product-thumbnail img {
   font-weight: 700;
   color: green;
   border-radius: 5px;
-  padding: 11px 20px 11px 30px;
+  padding: 11px 20px 11px 15px;
   max-width: 90px;
 }
 
@@ -5111,7 +5111,7 @@ table .product-thumbnail img {
 }
 
 .detail-info .product-price .current-price {
-  font-size: 45px;
+  font-size: 25px;
   text-decoration: none;
   font-weight: 900;
 }

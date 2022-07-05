@@ -234,7 +234,7 @@ return (
                     <div className="container">
                         <div className="row">
                             <div className="col-lg-8 mb-40">
-                                <h1 className="heading-2 mb-10">Warenkorb1</h1>
+                                <h1 className="heading-2 mb-10">Warenkorb</h1>
                                 <div className="d-flex justify-content-between">
                                     <h6 className="text-body">
                                         { cartItems.lenght > 1 ?
@@ -283,9 +283,9 @@ return (
                                                 </th>
                                                 <th scope="col">Stückpreis</th>
                                                 <th scope="col">Anzahl</th>
-                                                <th scope="col">Zwischentotal</th>
+                                                <th scope="col">Total</th>
                                                 <th scope="col" className="end">
-                                                    Entfernen
+                                                    
                                                 </th>
                                             </tr>
                                         </thead>
@@ -336,7 +336,7 @@ return (
                                                     <td
                                                         className="text-center detail-info"
                                                         data-title="Stock"
-                                                    ><div className="detail-extralink mr-15">
+                                                    ><div className="detail-extralink mr-10">
                                                         <div className="detail-qty border radius ">
                                                             <a
                                                                 onClick={(e) =>
