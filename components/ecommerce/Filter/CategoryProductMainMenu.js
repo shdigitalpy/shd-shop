@@ -58,7 +58,9 @@ const CategoryProductMainMenu = ({ updateProductCategory }) => {
                         {/*<span className="count">30</span>*/}
                     </li>
                 ))}
-            <li className="hot-deals">
+            
+
+            {/*<li className="hot-deals">
                                                 <img
                                                     src="/assets/imgs/theme/icons/icon-hot.svg"
                                                     alt="hot deals"
@@ -80,7 +82,7 @@ const CategoryProductMainMenu = ({ updateProductCategory }) => {
                                                     </a>
                                                 </Link>
 
-                                            </li>
+                                            </li>*/}
 
                                         </ul>
                                     </nav>

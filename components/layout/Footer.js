@@ -44,25 +44,7 @@ const Footer = () => {
                 <section className="featured  section-padding">
                     <div className="container">
                         <div className="row">
-                            <div className="col-lg-1-5 col-md-4 col-12 col-sm-6 mb-md-4 mb-xl-0">
-                                <div
-                                    className="banner-left-icon d-flex align-items-center  wow animate__animated animate__fadeInUp"
-                                    data-wow-delay="0"
-                                >
-                                    <div className="banner-icon">
-                                        <img
-                                            src="/assets/imgs/theme/icons/icon-1.svg"
-                                            alt=""
-                                        />
-                                    </div>
-                                    <div className="banner-text">
-                                        <h3 className="icon-box-title">
-                                           Gratis Lieferung
-                                        </h3>
-                                        <p>ab CHF 100.--</p>
-                                    </div>
-                                </div>
-                            </div>
+                            
                             <div className="col-lg-1-5 col-md-4 col-12 col-sm-6">
                                 <div
                                     className="banner-left-icon d-flex align-items-center  wow animate__animated animate__fadeInUp"
@@ -222,9 +204,7 @@ const Footer = () => {
                                     <li>
                                         <a href="/shop-wishlist">Merkliste</a>
                                     </li>
-                                    <li>
-                                        <a href="/page-account">Lieferung verfolgen</a>
-                                    </li>
+                                    
                                     
                                     
                                 </ul>
@@ -233,18 +213,18 @@ const Footer = () => {
                                 className="footer-link-widget col  wow animate__animated animate__fadeInUp"
                                 data-wow-delay=".3s"
                             >
-                                <h4 className="widget-title ">Informationen</h4>
+                                <h4 className="widget-title ">Versand</h4>
                                 <ul className="footer-list  mb-sm-5 mb-md-0">
-                                    <li>
-                                        <a href="#">FAQ</a>
-                                    </li>
+                                    
                                     <li>
                                         <a href="/lieferung">Lieferung</a>
                                     </li>
-            
+
                                     <li>
-                                        <a href="/shop">Aktionen</a>
+                                        <a href="/page-account">Lieferung verfolgen</a>
                                     </li>
+            
+                                   
                                 </ul>
                             </div>
                             <div
@@ -263,9 +243,7 @@ const Footer = () => {
                                     <li>
                                         <a href="/agb">AGB</a>
                                     </li>
-                                    <li>
-                                        <a href="/page-contact">Kontakt</a>
-                                    </li>
+                                  
                                     
                                    
                                 </ul>

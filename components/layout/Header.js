@@ -137,7 +137,7 @@ const Header = ({
                                 <div className="header-info header-info-right">
                                     <ul>
                                     
-                                        <li>
+                                        {/*<li>
                                             <Link href="/#">
                                                 <a className="language-dropdown-active">
                                                     <i className="fi-rs-world"></i>
@@ -159,13 +159,14 @@ const Header = ({
                                             </ul>
                                         </li>
 
+                                    
                                         <li>
                                                         <Link href="/page-contact">
                                                             <a>Kontakt</a>
                                                         </Link>
 
                                                         
-                                                </li>
+                                                </li>*/}
                                         
                                     </ul>
                                 </div>
